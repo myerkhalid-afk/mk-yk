@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MK · YK</title>
+<link href="https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk:wght@400;500&family=PP+Neue+Montreal:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0a0a0a;
+  --surface:#111;
+  --border:#1e1e1e;
+  --text:#f0f0f0;
+  --muted:#555;
+  --accent:#e8e0d0;
+  --highlight:#c8b89a;
+  --danger:#ff4545;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── LOCK SCREEN ── */
+#lock{
+  position:fixed;inset:0;
+  background:var(--bg);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:2rem;z-index:999;
+  transition:opacity .5s, visibility .5s;
+}
+#lock.hidden{opacity:0;visibility:hidden;pointer-events:none}
+
+.lock-mark{
+  font-size:1rem;
+  letter-spacing:.5em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.lock-title{
+  font-size:clamp(2.5rem,8vw,5rem);
+  font-weight:300;
+  letter-spacing:-.02em;
+  color:var(--accent);
+}
+.lock-sub{
+  font-size:.75rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.lock-input-wrap{
+  display:flex;flex-direction:column;
+  align-items:center;gap:.75rem;
+}
+#passcode-input{
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--border);
+  color:var(--text);
+  font-size:1.5rem;
+  letter-spacing:.4em;
+  text-align:center;
+  width:200px;
+  padding:.5rem 0;
+  outline:none;
+  transition:border-color .2s;
+  font-family:inherit;
+}
+#passcode-input:focus{border-color:var(--highlight)}
+#passcode-input.error{border-color:var(--danger);animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.lock-hint{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
+
+/* ── MAIN ── */
+#main{opacity:0;transition:opacity .6s}
+#main.visible{opacity:1}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  padding:1.5rem 2.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:100;
+  background:linear-gradient(to bottom,rgba(10,10,10,.9),transparent);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.nav-logo{
+  font-size:.85rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.nav-date{
+  font-size:.7rem;
+  letter-spacing:.15em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:8rem 2.5rem 4rem;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 60%, rgba(200,184,154,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 30%, rgba(200,184,154,.04) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:end;
+  gap:2rem;
+  max-width:1200px;
+  margin:0 auto;
+  width:100%;
+}
+
+.hero-eyebrow{
+  font-size:.7rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:1.5rem;
+}
+
+.hero-name{
+  font-size:clamp(4rem,12vw,10rem);
+  font-weight:300;
+  line-height:.9;
+  letter-spacing:-.04em;
+  color:var(--accent);
+}
+.hero-name span{
+  display:block;
+  color:var(--muted);
+  font-size:clamp(4rem,12vw,10rem);
+}
+
+.hero-right{
+  display:flex;flex-direction:column;
+  gap:2rem;
+  padding-bottom:.5rem;
+}
+
+.stat-row{
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  border-bottom:1px solid var(--border);
+  padding-bottom:1.25rem;
+}
+.stat-row:last-child{border:none;padding-bottom:0}
+.stat-num{
+  font-size:3rem;
+  font-weight:300;
+  letter-spacing:-.03em;
+  color:var(--highlight);
+  min-width:4rem;
+}
+.stat-desc{
+  font-size:.7rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ── SECTIONS ── */
+.section{
+  max-width:1200px;
+  margin:0 auto;
+  padding:6rem 2.5rem;
+  border-bottom:1px solid var(--border);
+}
+
+.section-header{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:4rem;
+  margin-bottom:4rem;
+  align-items:start;
+}
+.section-label{
+  font-size:.65rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-top:.2rem;
+}
+.section-title{
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:300;
+  letter-spacing:-.02em;
+  line-height:1.1;
+  color:var(--accent);
+}
+
+/* ── TIMELINE ── */
+.tl-list{
+  display:flex;flex-direction:column;
+  gap:0;
+}
+.tl-item{
+  display:grid;
+  grid-template-columns:160px 1px 1fr;
+  gap:0 2rem;
+  padding:2.5rem 0;
+  border-top:1px solid var(--border);
+  opacity:0;transform:translateY(12px);
+  transition:opacity .5s,transform .5s;
+}
+.tl-item:last-child{border-bottom:1px solid var(--border)}
+.tl-item.vis{opacity:1;transform:none}
+
+.tl-date{
+  font-size:.7rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted);
+  line-height:1.8;
+  padding-top:.15rem;
+}
+.tl-line{
+  background:var(--border);
+  position:relative;
+}
+.tl-line::before{
+  content:'';
+  position:absolute;
+  top:6px;left:50%;
+  transform:translateX(-50%);
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--highlight);
+  border:1px solid var(--bg);
+}
+.tl-content{padding-left:.5rem}
+.tl-event{
+  font-size:1.3rem;
+  font-weight:300;
+  letter-spacing:-.01em;
+  color:var(--accent);
+  margin-bottom:.5rem;
+}
+.tl-detail{
+  font-size:.82rem;
+  color:var(--muted);
+  line-height:1.75;
+  max-width:480px;
+}
+.tl-tag{
+  display:inline-block;
+  margin-top:.75rem;
+  font-size:.65rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--highlight);
+  border:1px solid rgba(200,184,154,.2);
+  padding:.25rem .7rem;
+  border-radius:2px;
+}
+
+/* ── COUNTDOWN ── */
+.countdown-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  align-items:center;
+}
+.cd-nums{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.cd-box{
+  background:var(--surface);
+  padding:2rem 1rem;
+  text-align:center;
+}
+.cd-n{
+  font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:300;
+  letter-spacing:-.03em;
+  color:var(--accent);
+  display:block;
+}
+.cd-u{
+  font-size:.6rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:.35rem;
+}
+.cd-info{display:flex;flex-direction:column;gap:1.5rem}
+.cd-dest{
+  font-size:.7rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;align-items:center;gap:.75rem;
+}
+.cd-dest::before{
+  content:'';
+  width:20px;height:1px;
+  background:var(--highlight);
+  flex-shrink:0;
+}
+.cd-date-big{
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:300;
+  letter-spacing:-.02em;
+  color:var(--accent);
+}
+
+/* ── PHOTOS ── */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.photo-slot{
+  aspect-ratio:1;
+  background:var(--surface);
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.photo-slot:hover .slot-overlay{opacity:1}
+.slot-overlay{
+  position:absolute;inset:0;
+  background:rgba(10,10,10,.6);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .2s;
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);
+}
+.slot-empty-icon{
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--border);
+}
+.photo-slot img{
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;inset:0;
+}
+.photo-slot input[type=file]{
+  position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:3rem 2.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  max-width:1200px;margin:0 auto;
+}
+.footer-mark{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+@media(max-width:700px){
+  .hero-grid,.section-header,.countdown-wrap{grid-template-columns:1fr}
+  .hero-name span{color:var(--highlight)}
+  nav{padding:1.2rem 1.5rem}
+  .section{padding:4rem 1.5rem}
+  .photo-grid{grid-template-columns:repeat(2,1fr)}
+  .tl-item{grid-template-columns:100px 1px 1fr;gap:0 1rem}
+  .cd-nums{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK -->
+<div id="lock">
+  <p class="lock-mark">Private</p>
+  <h1 class="lock-title">MK · YK</h1>
+  <p class="lock-sub">Enter passcode to continue</p>
+  <div class="lock-input-wrap">
+    <input id="passcode-input" type="password" maxlength="6" placeholder="· · · · · ·" autocomplete="off" autofocus/>
+    <p class="lock-hint">6-digit code</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <nav>
+    <span class="nav-logo">MK · YK</span>
+    <span class="nav-date" id="nav-date"></span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">Est. November 1, 2025</p>
+        <h1 class="hero-name">MK<span>YK</span></h1>
+      </div>
+      <div class="hero-right">
+        <div class="stat-row">
+          <span class="stat-num" id="s-days">—</span>
+          <span class="stat-desc">Days<br/>together</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num" id="s-months">—</span>
+          <span class="stat-desc">Months<br/>together</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num" id="s-trip">—</span>
+          <span class="stat-desc">Days until<br/>Europe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Timeline</span>
+      <h2 class="section-title">How it started</h2>
+    </div>
+    <div class="tl-list">
+
+      <div class="tl-item">
+        <div class="tl-date">Sep 30<br/>2025</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <p class="tl-event">First message</p>
+          <p class="tl-detail">The iMessage that started everything. One text, and something shifted.</p>
+          <span class="tl-tag">iMessage</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Oct 17<br/>2025</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <p class="tl-event">First date — New York</p>
+          <p class="tl-detail">MK flew to NYC. The first time in the same city, the same room. New York did its thing.</p>
+          <span class="tl-tag">New York City</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Nov 1<br/>2025</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <p class="tl-event">Official</p>
+          <p class="tl-detail">Day one. The start of the count.</p>
+          <span class="tl-tag">Together</span>
+        </div>
+      </div>
+
+      <div class="tl-item" style="opacity:.5">
+        <div class="tl-date">Jun 19<br/>2026</div>
+        <div class="tl-line" style="background:rgba(200,184,154,.15)"></div>
+        <div class="tl-content">
+          <p class="tl-event">Europe</p>
+          <p class="tl-detail">London. Milan. Lake Como. Coming up.</p>
+          <span class="tl-tag">Upcoming</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Next up</span>
+      <h2 class="section-title">Europe,<br/>June 2026</h2>
+    </div>
+    <div class="countdown-wrap">
+      <div class="cd-nums">
+        <div class="cd-box"><span class="cd-n" id="cd-d">—</span><span class="cd-u">Days</span></div>
+        <div class="cd-box"><span class="cd-n" id="cd-h">—</span><span class="cd-u">Hours</span></div>
+        <div class="cd-box"><span class="cd-n" id="cd-m">—</span><span class="cd-u">Min</span></div>
+        <div class="cd-box"><span class="cd-n" id="cd-s">—</span><span class="cd-u">Sec</span></div>
+      </div>
+      <div class="cd-info">
+        <p class="cd-date-big">June 19, 2026</p>
+        <p class="cd-dest">London</p>
+        <p class="cd-dest">Milan</p>
+        <p class="cd-dest">Lake Como</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Photos</span>
+      <h2 class="section-title">Us</h2>
+    </div>
+    <div class="photo-grid" id="photo-grid"></div>
+  </div>
+
+  <footer>
+    <span class="footer-mark">MK · YK</span>
+    <span class="footer-mark" id="footer-since">Since Nov 1, 2025</span>
+  </footer>
+
+</div>
+
+<script>
+// ── PASSCODE ──
+const PASSCODE = '110125'; // Nov 1, 2025 → easy to remember
+const lockEl = document.getElementById('lock');
+const mainEl = document.getElementById('main');
+const input  = document.getElementById('passcode-input');
+
+function unlock() {
+  lockEl.classList.add('hidden');
+  mainEl.classList.add('visible');
+  sessionStorage.setItem('mk-yk-auth','1');
+}
+
+if (sessionStorage.getItem('mk-yk-auth') === '1') unlock();
+
+input.addEventListener('input', () => {
+  if (input.value.length === 6) {
+    if (input.value === PASSCODE) {
+      unlock();
+    } else {
+      input.classList.add('error');
+      setTimeout(() => { input.classList.remove('error'); input.value = ''; }, 600);
+    }
+  }
+});
+
+// ── DATES ──
+const together = new Date('2025-11-01T00:00:00');
+const trip     = new Date('2026-06-19T00:00:00');
+const now      = new Date();
+
+document.getElementById('s-days').textContent =
+  Math.floor((now - together) / 86400000).toLocaleString();
+document.getElementById('s-months').textContent =
+  (now.getFullYear() - together.getFullYear()) * 12 + (now.getMonth() - together.getMonth());
+document.getElementById('s-trip').textContent =
+  Math.max(0, Math.ceil((trip - now) / 86400000));
+
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const d = now;
+document.getElementById('nav-date').textContent =
+  `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+
+// ── COUNTDOWN ──
+function tick() {
+  const diff = trip - new Date();
+  if (diff <= 0) return;
+  const day = Math.floor(diff/86400000);
+  const hr  = Math.floor((diff%86400000)/3600000);
+  const mn  = Math.floor((diff%3600000)/60000);
+  const sc  = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent = day;
+  document.getElementById('cd-h').textContent = String(hr).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(mn).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(sc).padStart(2,'0');
+}
+tick(); setInterval(tick,1000);
+
+// ── PHOTOS ──
+const grid   = document.getElementById('photo-grid');
+const stored = JSON.parse(localStorage.getItem('mk-yk-photos') || '{}');
+const SLOTS  = 6;
+
+for (let i = 0; i < SLOTS; i++) {
+  const slot = document.createElement('div');
+  slot.className = 'photo-slot';
+
+  if (stored[i]) {
+    const img = document.createElement('img');
+    img.src = stored[i];
+    slot.appendChild(img);
+    const ov = document.createElement('div');
+    ov.className = 'slot-overlay';
+    ov.textContent = 'Change';
+    slot.appendChild(ov);
+  } else {
+    const ic = document.createElement('span');
+    ic.className = 'slot-empty-icon';
+    ic.textContent = '+ Add';
+    slot.appendChild(ic);
+  }
+
+  const inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = 'image/*';
+  inp.addEventListener('change', e => {
+    const file = e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      stored[i] = ev.target.result;
+      localStorage.setItem('mk-yk-photos', JSON.stringify(stored));
+      slot.innerHTML = '';
+      const img = document.createElement('img'); img.src = ev.target.result;
+      slot.appendChild(img);
+      const ov = document.createElement('div'); ov.className='slot-overlay'; ov.textContent='Change';
+      slot.appendChild(ov);
+      const newInp = document.createElement('input'); newInp.type='file'; newInp.accept='image/*';
+      slot.appendChild(newInp);
+      newInp.addEventListener('change', inp.onchange); // re-bind
+    };
+    reader.readAsDataURL(file);
+  });
+  slot.appendChild(inp);
+  grid.appendChild(slot);
+}
+
+// ── SCROLL ANIMATIONS ──
+const obs = new IntersectionObserver(entries =>
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.tl-item').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
