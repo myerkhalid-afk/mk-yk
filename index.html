@@ -399,8 +399,8 @@ footer{
   <h1 class="lock-title">MK · YK</h1>
   <p class="lock-sub">Enter passcode to continue</p>
   <div class="lock-input-wrap">
-    <input id="passcode-input" type="password" maxlength="6" placeholder="· · · · · ·" autocomplete="off" autofocus/>
-    <p class="lock-hint">6-digit code</p>
+    <input id="passcode-input" type="password" maxlength="20" placeholder="···" autocomplete="off" autofocus/>
+    <p class="lock-hint">hint: where we spent Valentine's Day</p>
   </div>
 </div>
 
@@ -475,11 +475,21 @@ footer{
         </div>
       </div>
 
+      <div class="tl-item">
+        <div class="tl-date">Feb 14<br/>2026</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <p class="tl-event">Valentine's Day — Paris</p>
+          <p class="tl-detail">First trip together. Paris on Valentine's Day. Hard to top that.</p>
+          <span class="tl-tag">Paris</span>
+        </div>
+      </div>
+
       <div class="tl-item" style="opacity:.5">
         <div class="tl-date">Jun 19<br/>2026</div>
         <div class="tl-line" style="background:rgba(200,184,154,.15)"></div>
         <div class="tl-content">
-          <p class="tl-event">Europe</p>
+          <p class="tl-event">Europe — Round Two</p>
           <p class="tl-detail">London. Milan. Lake Como. Coming up.</p>
           <span class="tl-tag">Upcoming</span>
         </div>
@@ -492,7 +502,7 @@ footer{
   <div class="section">
     <div class="section-header">
       <span class="section-label">Next up</span>
-      <h2 class="section-title">Europe,<br/>June 2026</h2>
+      <h2 class="section-title">London · Milan<br/>Lake Como</h2>
     </div>
     <div class="countdown-wrap">
       <div class="cd-nums">
@@ -528,7 +538,7 @@ footer{
 
 <script>
 // ── PASSCODE ──
-const PASSCODE = '110125'; // Nov 1, 2025 → easy to remember
+const PASSCODE = 'paris';
 const lockEl = document.getElementById('lock');
 const mainEl = document.getElementById('main');
 const input  = document.getElementById('passcode-input');
@@ -542,13 +552,11 @@ function unlock() {
 if (sessionStorage.getItem('mk-yk-auth') === '1') unlock();
 
 input.addEventListener('input', () => {
-  if (input.value.length === 6) {
-    if (input.value === PASSCODE) {
-      unlock();
-    } else {
-      input.classList.add('error');
-      setTimeout(() => { input.classList.remove('error'); input.value = ''; }, 600);
-    }
+  if (input.value.toLowerCase() === PASSCODE) {
+    unlock();
+  } else if (input.value.length >= PASSCODE.length) {
+    input.classList.add('error');
+    setTimeout(() => { input.classList.remove('error'); input.value = ''; }, 600);
   }
 });
 
@@ -589,13 +597,23 @@ const grid   = document.getElementById('photo-grid');
 const stored = JSON.parse(localStorage.getItem('mk-yk-photos') || '{}');
 const SLOTS  = 6;
 
+// Pre-loaded photos (baked in)
+const preloaded = {
+  0: 'photo1.jpg',
+  1: 'photo2.jpg'
+};
+
 for (let i = 0; i < SLOTS; i++) {
   const slot = document.createElement('div');
   slot.className = 'photo-slot';
 
-  if (stored[i]) {
+  const src = stored[i] || (preloaded[i] ? preloaded[i] : null);
+
+  if (src) {
     const img = document.createElement('img');
-    img.src = stored[i];
+    img.src = src;
+    // fallback: if preloaded file missing, show empty slot
+    img.onerror = () => { slot.innerHTML = '<span class="slot-empty-icon">+ Add</span>'; addInput(slot, i); };
     slot.appendChild(img);
     const ov = document.createElement('div');
     ov.className = 'slot-overlay';
@@ -608,6 +626,11 @@ for (let i = 0; i < SLOTS; i++) {
     slot.appendChild(ic);
   }
 
+  addInput(slot, i);
+  grid.appendChild(slot);
+}
+
+function addInput(slot, i) {
   const inp = document.createElement('input');
   inp.type = 'file'; inp.accept = 'image/*';
   inp.addEventListener('change', e => {
@@ -621,14 +644,11 @@ for (let i = 0; i < SLOTS; i++) {
       slot.appendChild(img);
       const ov = document.createElement('div'); ov.className='slot-overlay'; ov.textContent='Change';
       slot.appendChild(ov);
-      const newInp = document.createElement('input'); newInp.type='file'; newInp.accept='image/*';
-      slot.appendChild(newInp);
-      newInp.addEventListener('change', inp.onchange); // re-bind
+      addInput(slot, i);
     };
     reader.readAsDataURL(file);
   });
   slot.appendChild(inp);
-  grid.appendChild(slot);
 }
 
 // ── SCROLL ANIMATIONS ──
