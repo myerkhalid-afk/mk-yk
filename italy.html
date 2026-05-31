@@ -7,82 +7,161 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07100f;--ink:#f7efe1;--muted:#afa797;--line:#2a322c;
-  --card:#111815;--cream:#f1dfbd;--gold:#d2a85a;--lake:#8fbec0;--terra:#c97b52;
+  --bg:#06100e;--ink:#f2e9d8;--muted:#9b9285;--faint:#6b6459;
+  --line:#1e2820;--line2:#252e27;--card:#0d1812;--card2:#0a120f;
+  --cream:#ede0c4;--gold:#c9a050;--gold2:#e8c97a;--lake:#7ab8ba;
+  --lake2:#a8d4d6;--terra:#c07a50;--booked:#4a9e6e;
+  --booked-bg:rgba(74,158,110,.12);--lead-bg:rgba(201,160,80,.10);
+  --tobook:#e07a3a;--tobook-bg:rgba(224,122,58,.10);
 }
 html{scroll-behavior:smooth}
-body{background:linear-gradient(180deg,#07100f,#0e1512 48%,#070b0a);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
-a{color:var(--cream);text-decoration-color:rgba(200,166,101,.55);text-underline-offset:4px}
-.lock{position:fixed;inset:0;z-index:20;background:#0b0b0a;display:flex;align-items:center;justify-content:center;padding:24px;transition:.35s}
+body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+a{color:var(--cream);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.72}
+.shell{width:min(1160px,calc(100% - 40px));margin:auto}
+.lock{position:fixed;inset:0;z-index:100;background:#05090a;display:flex;align-items:center;justify-content:center;padding:24px;transition:opacity .5s,visibility .5s}
 .lock.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.lock-inner{text-align:center;display:grid;gap:18px}
-.lock-kicker,.kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.lock h1{font-family:Georgia,serif;font-size:clamp(48px,10vw,92px);font-weight:400;color:var(--cream)}
-.lock input{width:min(260px,80vw);margin:auto;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);padding:12px;text-align:center;font-size:22px;letter-spacing:.35em;outline:0}
+.lock-inner{text-align:center;display:grid;gap:22px;max-width:340px}
+.lock-eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.lock h1{font-family:Georgia,serif;font-size:clamp(54px,12vw,96px);font-weight:400;color:var(--cream);line-height:.92}
+.lock input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line2);color:var(--ink);padding:14px 0;text-align:center;font-size:20px;letter-spacing:.4em;outline:0;font-family:Georgia,serif}
 .lock input:focus{border-color:var(--gold)}
-.shell{width:min(1180px,calc(100% - 36px));margin:auto}
-nav{position:fixed;z-index:10;top:0;left:0;right:0;padding:18px 0;background:linear-gradient(#07100fed,#07100f00);backdrop-filter:blur(8px)}
-nav .shell{display:flex;justify-content:space-between;align-items:center;gap:18px}
-.brand{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--cream)}
-.links{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end;font-size:13px;color:var(--muted)}
-.hero{min-height:100vh;display:grid;align-items:end;padding:110px 0 46px;position:relative;border-bottom:1px solid var(--line);background-image:linear-gradient(90deg,rgba(7,16,15,.95) 0%,rgba(7,16,15,.72) 38%,rgba(7,16,15,.30) 72%,rgba(7,16,15,.68) 100%),linear-gradient(180deg,rgba(7,16,15,.10),rgba(7,16,15,.86)),url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,16,15,.06),rgba(7,16,15,.78));pointer-events:none}
-.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:44px;align-items:end}
-h1{font-family:Georgia,serif;font-size:clamp(58px,11vw,118px);line-height:.88;font-weight:400;letter-spacing:0;color:var(--cream);text-shadow:0 18px 70px #000}
-.lede{max-width:720px;margin-top:24px;font-size:clamp(18px,2vw,24px);color:#cfc6b7}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;min-height:44px;border:1px solid var(--cream);border-radius:5px;padding:10px 16px;text-decoration:none;font-weight:750;background:var(--cream);color:#15130f}
-.btn.ghost{background:transparent;color:var(--cream);border-color:var(--line)}
-.portrait{border:1px solid rgba(241,223,189,.20);background:rgba(17,24,21,.82);border-radius:8px;overflow:hidden;box-shadow:0 30px 90px #000a;backdrop-filter:blur(8px)}
-.portrait img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;filter:saturate(.85) contrast(1.04)}
-.portrait p{padding:15px 17px;color:var(--muted);font-size:13px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);position:relative;background:#0c1412e8}
-.stat{padding:18px;border-right:1px solid var(--line);min-height:86px}
-.stat:last-child{border-right:0}.stat b{display:block;color:var(--cream);font-size:18px}.stat span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:5px}
-section{padding:78px 0;border-bottom:1px solid var(--line)}
-.head{display:grid;grid-template-columns:.8fr .45fr;gap:34px;align-items:end;margin-bottom:30px}
-h2{font-family:Georgia,serif;font-size:clamp(36px,6vw,66px);line-height:1;font-weight:400;color:var(--cream);letter-spacing:0}
-.note{color:var(--muted)}
-.days{display:grid;gap:12px}
-.day{display:grid;grid-template-columns:150px 1fr 260px;gap:20px;padding:22px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(135deg,rgba(24,32,27,.96),rgba(12,18,16,.96));box-shadow:0 18px 50px #0004}
-.day h3{font-size:20px;color:var(--cream);margin-bottom:3px}.day p{color:var(--muted)}
-.tags{display:flex;gap:8px;flex-wrap:wrap;align-content:start}.tag{border:1px solid rgba(106,160,163,.35);color:#bfe1e1;background:rgba(106,160,163,.09);border-radius:999px;font-size:12px;font-weight:750;padding:5px 9px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,#121b17,#0d1210);padding:20px;box-shadow:0 18px 46px #0005;border-top:4px solid var(--lake)}
-.card:nth-child(2n){border-top-color:var(--terra)}.card:nth-child(3n){border-top-color:var(--gold)}
-.card h3{font-size:21px;margin-bottom:10px;color:var(--cream)}.card p,.card li{color:var(--muted)}.card ul{padding-left:18px;margin-top:10px}
-.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.option{position:relative;border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,rgba(21,31,27,.98),rgba(10,15,13,.98));padding:22px;box-shadow:0 22px 60px #0007;overflow:hidden}
-.option:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--lake));opacity:.8}
-.option.lead{border-color:rgba(200,166,101,.72);box-shadow:0 24px 70px rgba(200,166,101,.12)}
-.option h3{font-size:24px;color:var(--cream);margin-bottom:8px}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
-.pill{border:1px solid rgba(200,166,101,.34);border-radius:999px;color:var(--cream);background:rgba(200,166,101,.08);font-size:12px;font-weight:750;padding:5px 9px}
-.price{font-size:28px;line-height:1;color:var(--gold);font-family:Georgia,serif;margin:10px 0 5px}
-.small{font-size:13px;color:var(--muted)}
-.score{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}
-.score div{border:1px solid var(--line);border-radius:6px;padding:10px;background:#0e0d0b}
-.score b{display:block;color:var(--cream);font-size:18px}.score span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
-.decision{border:1px solid rgba(143,190,192,.45);border-radius:8px;background:linear-gradient(135deg,rgba(143,190,192,.13),rgba(210,168,90,.08));padding:18px;margin-bottom:18px;color:#e2f0ed}
-.lake-panel{min-height:320px;border:1px solid var(--line);border-radius:8px;background-image:linear-gradient(180deg,rgba(7,16,15,.08),rgba(7,16,15,.72)),url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center;box-shadow:0 28px 80px #0008;display:flex;align-items:flex-end;padding:22px;margin-bottom:18px}
-.lake-panel p{max-width:620px;color:#efe5d0;font-size:18px;text-shadow:0 6px 26px #000}
-.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px;align-items:start}
-.photo{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card);box-shadow:0 24px 70px #0008}.photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
-.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.check{display:grid;grid-template-columns:28px 1fr;gap:11px;padding:16px;border:1px solid var(--line);border-radius:8px;background:#11100e}.box{width:22px;height:22px;border:2px solid var(--terra);border-radius:5px;margin-top:1px}.check strong{display:block;color:var(--cream);margin-bottom:3px}.check span{color:var(--muted);font-size:14px}
-.sources{columns:2;column-gap:32px;color:var(--muted);font-size:14px}.sources p{break-inside:avoid;margin-bottom:10px}
-footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
-@media(max-width:850px){
-  .shell{width:min(100% - 24px,1180px)}nav .shell{align-items:flex-start;flex-direction:column}.hero-grid,.head,.split{grid-template-columns:1fr}.portrait img{aspect-ratio:16/10}.stats{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--line)}.day{grid-template-columns:1fr}.grid,.option-grid,.checklist{grid-template-columns:1fr}.sources{columns:1}
+nav{position:fixed;z-index:50;top:0;left:0;right:0;padding:20px 0;background:linear-gradient(var(--bg),transparent);backdrop-filter:blur(12px)}
+nav .shell{display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--cream);font-weight:600}
+.links{display:flex;gap:22px}
+.links a{color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.2em;font-weight:500}
+.hero{min-height:100vh;position:relative;display:grid;align-items:end;padding:100px 0 0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center 30%;z-index:0}
+.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(170deg,rgba(6,16,14,.84) 0%,rgba(6,16,14,.55) 40%,rgba(6,16,14,.82) 100%)}
+.hero-content{position:relative;z-index:1}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow span{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
+h1{font-family:Georgia,serif;font-size:clamp(56px,10vw,122px);line-height:.88;font-weight:400;color:var(--cream);letter-spacing:-.02em;text-shadow:0 24px 80px rgba(0,0,0,.6)}
+h1 em,h2 em{font-style:italic;color:var(--lake2)}
+.hero-lede{max-width:640px;margin-top:26px;font-size:clamp(16px,1.6vw,20px);color:rgba(242,233,216,.74);line-height:1.65}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;padding-bottom:48px}
+.btn{display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:4px;font-size:13px;font-weight:650;letter-spacing:.04em}
+.btn-primary{background:var(--cream);color:#14120d;border:1px solid var(--cream)}
+.btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(242,233,216,.28)}
+.hero-portrait{position:absolute;right:0;bottom:0;z-index:1;width:clamp(210px,22vw,340px)}
+.hero-portrait-inner{border:1px solid rgba(242,233,216,.14);background:rgba(13,24,18,.88);border-radius:8px 8px 0 0;overflow:hidden;backdrop-filter:blur(10px)}
+.hero-portrait img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.82) contrast(1.05)}
+.hero-portrait-caption{padding:14px 16px;font-size:12px;color:var(--faint);line-height:1.5}
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(10,18,15,.96);position:relative;z-index:2}
+.stat{padding:22px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat-label{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;font-weight:600}
+.stat-value{font-size:16px;color:var(--cream);font-weight:650;line-height:1.3}
+.stat-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:750;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
+.badge:before{content:"";width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.badge-booked{background:var(--booked-bg);color:var(--booked);border:1px solid rgba(74,158,110,.3)}
+.badge-booked:before{background:var(--booked)}
+.badge-lead{background:var(--lead-bg);color:var(--gold2);border:1px solid rgba(201,160,80,.3)}
+.badge-lead:before{background:var(--gold)}
+.badge-tobook{background:var(--tobook-bg);color:var(--tobook);border:1px solid rgba(224,122,58,.3)}
+.badge-tobook:before{background:var(--tobook)}
+.badge-alt{background:rgba(155,146,133,.08);color:var(--muted);border:1px solid rgba(155,146,133,.2)}
+.badge-alt:before{background:var(--muted)}
+section{padding:88px 0;border-bottom:1px solid var(--line)}
+.section-header{margin-bottom:42px}
+h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;font-weight:400;color:var(--cream);letter-spacing:-.02em}
+.section-note{margin-top:18px;max-width:640px;color:var(--muted);font-size:15px;line-height:1.7}
+.timeline{display:grid;gap:1px;background:var(--line)}
+.day-row{display:grid;grid-template-columns:160px 1fr 210px;background:var(--bg);padding:28px 0;gap:28px;border-bottom:1px solid var(--line)}
+.day-row:last-child{border-bottom:0}
+.day-dow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+.day-num{font-family:Georgia,serif;font-size:32px;color:var(--cream);line-height:1}
+.day-month{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
+.day-content h3{font-size:18px;color:var(--cream);margin-bottom:8px;font-weight:650}
+.day-content p{color:var(--muted);font-size:14px;line-height:1.7}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{font-size:11px;color:var(--lake);border:1px solid rgba(122,184,186,.25);background:rgba(122,184,186,.06);border-radius:2px;padding:4px 8px;font-weight:500}
+.day-status{display:flex;flex-direction:column;gap:8px;padding-top:4px;align-items:flex-end}
+.grid{display:grid;gap:14px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.anchor-card,.option-card,.food-card,.note-card{border:1px solid var(--line2);border-radius:8px;background:linear-gradient(145deg,var(--card),var(--card2));padding:24px;position:relative;overflow:hidden}
+.anchor-card{border-color:rgba(74,158,110,.35);padding:34px;box-shadow:0 30px 90px rgba(0,0,0,.5),0 0 0 1px rgba(74,158,110,.12) inset}
+.anchor-card:before,.option-card.is-lead:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--booked),var(--gold))}
+.anchor-header{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;margin-bottom:24px}
+.card-name{font-family:Georgia,serif;font-size:34px;color:var(--cream);font-weight:400;margin:10px 0 6px;line-height:1.1}
+.card-location{font-size:13px;color:var(--muted);letter-spacing:.06em}
+.price{font-family:Georgia,serif;font-size:42px;color:var(--booked);line-height:1;text-align:right}
+.price-note{font-size:11px;color:var(--muted);text-align:right;margin-top:4px;letter-spacing:.1em;text-transform:uppercase}
+.anchor-body{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.copy p,.option-body,.food-desc{color:var(--muted);font-size:14px;line-height:1.75}
+.copy p{margin-bottom:14px}
+.copy strong{color:var(--cream)}
+.specs{background:rgba(255,255,255,.03);border:1px solid var(--line2);border-radius:6px;padding:20px}
+.spec-row{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}
+.spec-row:last-child{border-bottom:0}
+.spec-label{color:var(--faint);text-transform:uppercase;font-size:10px;letter-spacing:.18em;font-weight:650;padding-top:1px}
+.spec-value{color:var(--cream);text-align:right;font-weight:550}
+.option-card.is-lead{border-color:rgba(201,160,80,.42)}
+.option-title,.food-name{font-family:Georgia,serif;font-size:21px;color:var(--cream);margin:10px 0 8px;font-weight:400;line-height:1.2}
+.option-price{font-family:Georgia,serif;font-size:28px;color:var(--gold);line-height:1;margin:14px 0 6px}
+.option-price-note{font-size:12px;color:var(--faint)}
+.option-body ul{padding-left:16px;margin-top:8px}
+.option-body li{margin-bottom:5px}
+.option-link,.food-link{display:inline-block;font-size:12px;color:var(--gold2);margin-top:16px;border-bottom:1px solid rgba(201,160,80,.3);padding-bottom:2px}
+.status-label{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:750;margin:34px 0 14px}
+.lake-band{min-height:280px;border:1px solid var(--line2);border-radius:8px;background-image:linear-gradient(160deg,rgba(6,16,14,.82),rgba(6,16,14,.40),rgba(6,16,14,.78)),url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:30px;margin-bottom:18px}
+.lake-band p{max-width:560px;color:var(--cream);font-size:18px;line-height:1.65;font-style:italic;font-family:Georgia,serif;text-shadow:0 4px 20px #000}
+.food-city{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);font-weight:750;margin-bottom:8px}
+.budget-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:start}
+.budget-table{border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--card)}
+.budget-divider{padding:10px 22px 6px;background:rgba(255,255,255,.02);border-bottom:1px solid var(--line)}
+.budget-divider-label{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);font-weight:750}
+.budget-row{display:grid;grid-template-columns:1fr auto auto;padding:16px 22px;border-bottom:1px solid var(--line);font-size:14px;gap:20px;align-items:center}
+.budget-row:last-child{border-bottom:0}
+.budget-row.total{background:rgba(255,255,255,.035);border-top:1px solid var(--line2)}
+.budget-label{color:var(--ink)}
+.budget-note{color:var(--faint);font-size:12px}
+.budget-amount{color:var(--cream);font-weight:650;font-family:Georgia,serif;font-size:16px;text-align:right}
+.budget-row.total .budget-amount{color:var(--gold2);font-size:19px}
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check-item{display:grid;grid-template-columns:36px 1fr;gap:14px;padding:20px;border:1px solid var(--line2);border-radius:8px;background:var(--card);align-items:start}
+.check-box{width:22px;height:22px;border:2px solid var(--line2);border-radius:4px;margin-top:2px}
+.check-box.done{background:var(--booked);border-color:var(--booked);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='%23fff' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:12px}
+.check-box.urgent{border-color:var(--tobook)}
+.check-title{font-size:15px;color:var(--cream);font-weight:650;margin-bottom:5px}
+.check-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.paris-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--card);margin-top:12px}
+.paris-item{padding:18px 16px;border-right:1px solid var(--line);text-align:center}
+.paris-item:last-child{border-right:0}
+.paris-place{font-size:12px;color:var(--cream);font-weight:650;margin-bottom:4px}
+.paris-role{font-size:10px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase}
+.sources{columns:2;column-gap:36px;color:var(--faint);font-size:13px;line-height:1.7}
+.sources p{break-inside:avoid;margin-bottom:10px}
+footer{padding:52px 0 72px;color:var(--faint);font-size:13px;border-top:1px solid var(--line)}
+footer .shell{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:900px){
+  .shell{width:calc(100% - 28px)}
+  .links{display:none}
+  .statstrip{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid var(--line)}
+  .day-row{grid-template-columns:118px 1fr;grid-template-rows:auto auto}
+  .day-status{align-items:flex-start;grid-column:2}
+  .anchor-body,.anchor-header,.two-col,.three-col,.budget-cols,.checklist{grid-template-columns:1fr}
+  .price{text-align:left;font-size:34px}.price-note{text-align:left}
+  .hero-portrait{display:none}
+  .paris-strip{grid-template-columns:repeat(2,1fr)}
+  .paris-item{border-bottom:1px solid var(--line)}
+  .sources{columns:1}
+  footer .shell{flex-direction:column;gap:12px;text-align:center}
 }
 </style>
 </head>
 <body>
 <div class="lock" id="lock">
   <div class="lock-inner">
-    <p class="lock-kicker">Private planning room</p>
+    <p class="lock-eyebrow">Private planning room</p>
     <h1>MK / YK</h1>
-    <input id="pass" type="password" placeholder="..." autocomplete="off" autofocus>
-    <p class="lock-kicker">hint: Valentine's city</p>
+    <input id="pass" type="password" placeholder="enter passcode" autocomplete="off" autofocus>
+    <p class="lock-eyebrow">Hint: Valentine's city</p>
   </div>
 </div>
 
@@ -90,160 +169,277 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
   <div class="shell">
     <div class="brand">MK / YK</div>
     <div class="links">
-      <a href="#plan">Plan</a><a href="#stays">Hotels</a><a href="#food">Food</a><a href="#budget">Budget</a><a href="#book">Book</a>
+      <a href="#itinerary">Itinerary</a>
+      <a href="#hotels">Hotels</a>
+      <a href="#food">Food</a>
+      <a href="#budget">Budget</a>
+      <a href="#book">To Book</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="shell hero-grid">
-    <div>
-      <p class="kicker">Rechecked for Milan / Lake / Milan</p>
-      <h1>One lake night, properly done.</h1>
-      <p class="lede">The sharper version: two Milan nights for ease and one Lake Como night for the reveal. Pack a small overnight bag, leave the big luggage in Milan, and make the lake feel like a jewel box instead of a logistics project.</p>
-      <div class="actions">
-        <a class="btn" href="#stays">Compare hotels</a>
-        <a class="btn ghost" href="#budget">See budget</a>
-      </div>
+  <div class="hero-bg"></div>
+  <div class="shell hero-content">
+    <div class="eyebrow"><span>Milan / Bellagio / Milan - June 2026</span></div>
+    <h1>Booked where<br><em>it counts.</em></h1>
+    <p class="hero-lede">All three hotel nights are booked: Saturday in Navigli, Sunday on the Bellagio waterfront, and Monday back in a canal-view Milan room. Now the trip shifts from hotel hunting to flights, luggage flow, dinners, and the lake-morning plan.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#hotels">See confirmed hotels</a>
+      <a class="btn btn-ghost" href="#book">What is still open</a>
     </div>
-    <figure class="portrait">
-      <img src="photo2.jpg" alt="Stylized portrait of MK and YK">
-      <p>Reference point: Relais Montmartre, Le Bon Georges, Perruche, Pink Mamma, Gruppomimo, Brasserie des Pres. No drinking needed; the room, view, food, and pacing do the work.</p>
-    </figure>
   </div>
+  <figure class="hero-portrait">
+    <div class="hero-portrait-inner">
+      <img src="photo2.jpg" alt="MK and YK">
+      <p class="hero-portrait-caption">Paris reference: boutique hotel, pretty rooms, good dinners, dessert, views. Same romance, lake edition.</p>
+    </div>
+  </figure>
 </header>
 
-<div class="stats">
-  <div class="stat"><span>Current lead</span><b>Maison Borella / La Darsena</b></div>
-  <div class="stat"><span>Budget target</span><b>About EUR 3k max</b></div>
-  <div class="stat"><span>Lake choice</span><b>One-night waterfront</b></div>
-  <div class="stat"><span>No-drink plan</span><b>Views, dessert, boat, dinner</b></div>
+<div class="statstrip">
+  <div class="stat">
+    <div class="stat-label">Booked</div>
+    <div class="stat-value">Maison Borella</div>
+    <div class="stat-sub" style="color:var(--booked);font-weight:750">Jun 20-21 / Maison Privee Senior</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Booked</div>
+    <div class="stat-value">Hotel Du Lac, Bellagio</div>
+    <div class="stat-sub" style="color:var(--booked);font-weight:750">Jun 21-22 / Superior room</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Booked</div>
+    <div class="stat-value">Maison Borella</div>
+    <div class="stat-sub" style="color:var(--booked);font-weight:750">Jun 22-23 / Canal View Superior</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Budget shape</div>
+    <div class="stat-value">EUR 901.75 hotel base</div>
+    <div class="stat-sub">Before city taxes and flights</div>
+  </div>
 </div>
 
 <main>
-<section id="plan">
+<section id="itinerary">
   <div class="shell">
-    <div class="head">
-      <h2>The Actual Itinerary</h2>
-      <p class="note">The route is simple on purpose. Milan gets the Saturday night; Lake Como gets the emotional center; Tuesday stays buffered enough to make the flight back painless.</p>
+    <div class="section-header">
+      <div class="eyebrow"><span>Day by day</span></div>
+      <h2>The <em>Itinerary</em></h2>
+      <p class="section-note">The trip now has two anchors: Navigli on arrival and Bellagio for the lake reveal. Monday should stay easy, not overstuffed.</p>
     </div>
-    <div class="days">
-      <article class="day">
-        <div><span class="kicker">Saturday</span><h3>June 20</h3></div>
-        <p>Morning flight London to Milan. Check into Maison Borella in Navigli, then keep the day photogenic and easy: Duomo/Galleria, coffee or dessert, and a pretty dinner instead of a drinks-led night.</p>
-        <div class="tags"><span class="tag">Maison Borella</span><span class="tag">Duomo</span><span class="tag">Dessert</span><span class="tag">Milan dinner</span></div>
-      </article>
-      <article class="day">
-        <div><span class="kicker">Sunday</span><h3>June 21</h3></div>
-        <p>Leave big luggage with the Milan hotel if possible. Take an overnight bag to Tremezzo/Bellagio, check into the lake hotel, ferry or stroll, then dinner on the water.</p>
-        <div class="tags"><span class="tag">Overnight bag</span><span class="tag">Tremezzo</span><span class="tag">Waterfront</span><span class="tag">View dinner</span></div>
-      </article>
-      <article class="day">
-        <div><span class="kicker">Monday</span><h3>June 22</h3></div>
-        <p>Morning lake breakfast, ferry/boat, Bellagio or Villa Carlotta/Villa Melzi, then return to Milan by evening. Sleep again in Milan so Tuesday is calm.</p>
-        <div class="tags"><span class="tag">Lake breakfast</span><span class="tag">Bellagio</span><span class="tag">Boat</span><span class="tag">Milan return</span></div>
-      </article>
-      <article class="day">
-        <div><span class="kicker">Tuesday</span><h3>June 23</h3></div>
-        <p>Slow coffee, train back to Milan, airport transfer, fly to London. Target a return after 2:30pm; earlier flights make the morning feel like logistics instead of a final morning together.</p>
-        <div class="tags"><span class="tag">Coffee</span><span class="tag">Train buffer</span><span class="tag">London return</span></div>
-      </article>
+    <div class="timeline">
+      <div class="day-row">
+        <div><div class="day-dow">Friday</div><div class="day-num">19</div><div class="day-month">June</div></div>
+        <div class="day-content">
+          <h3>London - already there</h3>
+          <p>Base night in London. Sleep well, keep the morning clean, then fly to Milan Saturday.</p>
+          <div class="tags"><span class="tag">London</span><span class="tag">Pre-trip rest</span></div>
+        </div>
+        <div class="day-status"><span class="badge badge-alt">Pre-trip</span></div>
+      </div>
+      <div class="day-row">
+        <div><div class="day-dow">Saturday</div><div class="day-num">20</div><div class="day-month">June</div></div>
+        <div class="day-content">
+          <h3>London to Milan - Navigli night</h3>
+          <p>Fly London to Milan. Check into Maison Borella after 14:00. Duomo/Galleria, Marchesi for coffee or dessert, then an elegant Milan dinner.</p>
+          <div class="tags"><span class="tag">Maison Borella booked</span><span class="tag">Navigli</span><span class="tag">Duomo</span><span class="tag">Marchesi</span><span class="tag">Dinner</span></div>
+        </div>
+        <div class="day-status"><span class="badge badge-booked">Hotel booked</span><span class="badge badge-tobook">Flights to book</span></div>
+      </div>
+      <div class="day-row">
+        <div><div class="day-dow">Sunday</div><div class="day-num">21</div><div class="day-month">June</div></div>
+        <div class="day-content">
+          <h3>Milan to Bellagio - the lake night</h3>
+          <p>Leave the big suitcase with Maison Borella if they agree. Take one overnight bag to Bellagio. Check into Hotel Du Lac & SPA from 14:00, keep dinner walkable, and make the evening about the water.</p>
+          <div class="tags"><span class="tag">Hotel Du Lac booked</span><span class="tag">Bellagio</span><span class="tag">Breakfast included</span><span class="tag">SPA access</span><span class="tag">Walkable dinner</span></div>
+        </div>
+        <div class="day-status"><span class="badge badge-booked">Hotel booked</span><span class="badge badge-tobook">Dinner to book</span></div>
+      </div>
+      <div class="day-row">
+        <div><div class="day-dow">Monday</div><div class="day-num">22</div><div class="day-month">June</div></div>
+        <div class="day-content">
+          <h3>Bellagio morning to Milan</h3>
+          <p>Breakfast 7:30-10:30. Reserve a SPA slot if useful, then do the lake morning: Villa Melzi by foot, a private boat hour, or ferry to Varenna. Return to Milan and check back into Maison Borella for the canal-view final night.</p>
+          <div class="tags"><span class="tag">Villa Melzi</span><span class="tag">Boat/ferry</span><span class="tag">Return Milan</span><span class="tag">Maison Borella decision</span></div>
+        </div>
+        <div class="day-status"><span class="badge badge-booked">Hotel booked</span><span class="badge badge-tobook">Boat plan</span></div>
+      </div>
+      <div class="day-row">
+        <div><div class="day-dow">Tuesday</div><div class="day-num">23</div><div class="day-month">June</div></div>
+        <div class="day-content">
+          <h3>Milan to London - easy out</h3>
+          <p>Slow coffee, collect luggage, airport transfer. Target a return flight after 2:30pm so the day does not feel like a scramble.</p>
+          <div class="tags"><span class="tag">Final coffee</span><span class="tag">Airport</span><span class="tag">London return</span></div>
+        </div>
+        <div class="day-status"><span class="badge badge-tobook">Flight to book</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="stays">
+<section id="hotels">
   <div class="shell">
-    <div class="head">
-      <h2>Hotel Decision Board</h2>
-      <p class="note">Rechecked for 2 adults, 1 room. Milan: June 20-21 and June 22-23. Lake Como: June 21-22. Prices shown from availability checks, converted roughly from CAD to EUR.</p>
+    <div class="section-header">
+      <div class="eyebrow"><span>Where you stay</span></div>
+      <h2>Hotel <em>Dashboard</em></h2>
+      <p class="section-note">All hotel bookings are confirmed from Gmail. The remaining work is logistics and reservations, not hotel selection.</p>
     </div>
-    <div class="lake-panel">
-      <p>The one-night lake version works best when the hotel is close to the water. The lake night should feel effortless: arrive, see the view, dinner, breakfast, boat, back to Milan.</p>
+
+    <div class="status-label" style="color:var(--booked)">Booked / Milan arrival</div>
+    <div class="anchor-card">
+      <div class="anchor-header">
+        <div>
+          <span class="badge badge-booked">Booked & confirmed</span>
+          <div class="card-name">Maison Borella</div>
+          <div class="card-location">Navigli, Milan - Saturday 20 June to Sunday 21 June</div>
+        </div>
+        <div>
+          <div class="price">EUR 305</div>
+          <div class="price-note">1 night / pay later</div>
+        </div>
+      </div>
+      <div class="anchor-body">
+        <div class="copy">
+          <p>This is the right first-night Milan base: canal-side, boutique, and close enough to turn the arrival evening into a proper date instead of hotel logistics.</p>
+          <p><strong>Ask the hotel now:</strong> can they hold the large suitcase from Sunday morning until Monday evening while you take one overnight bag to Bellagio?</p>
+        </div>
+        <div class="specs">
+          <div class="spec-row"><span class="spec-label">Confirmation</span><span class="spec-value">GP00QX60KI</span></div>
+          <div class="spec-row"><span class="spec-label">Room</span><span class="spec-value">Maison Privee Senior</span></div>
+          <div class="spec-row"><span class="spec-label">Check-in</span><span class="spec-value">After 14:00</span></div>
+          <div class="spec-row"><span class="spec-label">Check-out</span><span class="spec-value">Before 12:00</span></div>
+          <div class="spec-row"><span class="spec-label">Plan</span><span class="spec-value">Free cancellation / pay later</span></div>
+          <div class="spec-row"><span class="spec-label">Included</span><span class="spec-value">Free buffet breakfast</span></div>
+          <div class="spec-row"><span class="spec-label">On site</span><span class="spec-value">EUR 20 city tax</span></div>
+          <div class="spec-row"><span class="spec-label">Cancel by</span><span class="spec-value">3 days before arrival</span></div>
+        </div>
+      </div>
     </div>
-    <div class="decision">
-      Current planner read: keep Maison Borella as the Milan anchor for both Milan nights if possible, and ask them to store the big luggage while you take one overnight bag to Como. For the lake, La Darsena is now the best fit because it is available for one night, waterfront, highly rated, and in Tremezzo.
+
+    <div class="status-label" style="color:var(--booked)">Booked / Lake anchor</div>
+    <div class="anchor-card">
+      <div class="anchor-header">
+        <div>
+          <span class="badge badge-booked">Booked & confirmed</span>
+          <div class="card-name">Hotel Du Lac & SPA</div>
+          <div class="card-location">Bellagio, Lake Como - Sunday 21 June to Monday 22 June</div>
+        </div>
+        <div>
+          <div class="price">EUR 351.75</div>
+          <div class="price-note">plus city tax</div>
+        </div>
+      </div>
+      <div class="anchor-body">
+        <div class="copy">
+          <p>This is the star of the trip. Hotel Du Lac sits directly on Bellagio's waterfront, so Sunday evening can be simple: arrive, settle, dinner nearby, lake walk, no taxis.</p>
+          <p>Breakfast is included. Complimentary SPA access is included too, but the hotel asks that you reserve a session in advance.</p>
+          <a class="option-link" href="https://www.bellagiohoteldulac.com" target="_blank" rel="noreferrer">Hotel Du Lac official site -></a>
+        </div>
+        <div class="specs">
+          <div class="spec-row"><span class="spec-label">Booking #</span><span class="spec-value">2026053148907555</span></div>
+          <div class="spec-row"><span class="spec-label">Room</span><span class="spec-value">Superior room (2 adults)</span></div>
+          <div class="spec-row"><span class="spec-label">Check-in</span><span class="spec-value">From 14:00</span></div>
+          <div class="spec-row"><span class="spec-label">Check-out</span><span class="spec-value">By 11:00</span></div>
+          <div class="spec-row"><span class="spec-label">Breakfast</span><span class="spec-value">7:30-10:30</span></div>
+          <div class="spec-row"><span class="spec-label">City tax</span><span class="spec-value">EUR 3 pp/night</span></div>
+          <div class="spec-row"><span class="spec-label">Cancel free until</span><span class="spec-value">5 Jun 2026, 23:59</span></div>
+          <div class="spec-row"><span class="spec-label">Payment</span><span class="spec-value">Deposit email via Hobex</span></div>
+        </div>
+      </div>
     </div>
-    <div class="option-grid">
-      <article class="option lead">
-        <p class="kicker">Lake lead / best one-night fit</p>
-        <h3>La Darsena - Tremezzo</h3>
-        <p>Waterfront boutique hotel and restaurant in Tremezzo. This is the cleanest one-night lake move: arrive, drop bags, eat by the water, wake up on the lake.</p>
-        <p class="price">~EUR 280</p>
-        <p class="small">Booking check: CAD 429 + CAD 10 taxes for June 21-22. Double/Twin Room with Partial Lake View, breakfast included, one room left.</p>
-        <div class="meta"><span class="pill">Wow 8.5/10</span><span class="pill">Ease 9/10</span><span class="pill">Value 10/10</span></div>
-        <ul><li>Best replacement for Al Veluu when doing only one lake night.</li><li>Restaurant is built into the plan.</li><li>Close to ferry logistics for Bellagio/Villa Carlotta.</li></ul>
-        <a href="https://www.ladarsena.it/en/" target="_blank" rel="noreferrer">Official site</a>
-      </article>
-      <article class="option">
-        <p class="kicker">Milan anchor / Paris texture</p>
-        <h3>Maison Borella - both Milan nights</h3>
-        <p>Boutique Milan stay in an 18th-century canal-side building. Use it as the stable base: Saturday night, luggage storage Sunday, then Monday night after the lake.</p>
-        <p class="price">~EUR 635</p>
-        <p class="small">Booking checks: Jun 20-21 CAD 540 + tax; Jun 22-23 CAD 407 + tax. Breakfast included on both searches. Monday room showed courtyard view.</p>
-        <div class="meta"><span class="pill">Wow 7.5/10</span><span class="pill">Ease 8/10</span><span class="pill">Value 8/10</span></div>
-        <ul><li>Request a quiet/courtyard room.</li><li>Works well with Duomo/Galleria and dinner.</li><li>Best Milan option found for mood vs price.</li></ul>
-        <a href="https://www.booking.com/hotel/it/maison-borella.en-gb.html?checkin=2026-06-20&checkout=2026-06-21&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Booking details</a>
-      </article>
-      <article class="option">
-        <p class="kicker">Bellagio alternative</p>
-        <h3>Hotel Du Lac & SPA - Bellagio</h3>
-        <p>More iconic Bellagio address with excellent location. Better if Yusma wants the classic Bellagio name more than Tremezzo calm.</p>
-        <p class="price">~EUR 385</p>
-        <p class="small">Booking check: CAD 595 + CAD 10 taxes for June 21-22. Superior Double/Twin, breakfast included, free cancellation.</p>
-        <div class="meta"><span class="pill">Wow 8.5/10</span><span class="pill">Ease 8/10</span><span class="pill">Value 8/10</span></div>
-        <ul><li>More tourist-energy, but very central.</li><li>Good for evening wandering.</li><li>Costs more than La Darsena.</li></ul>
-        <a href="https://www.booking.com/searchresults.en-gb.html?ss=Bellagio%2C%20Lombardy%2C%20Italy&checkin=2026-06-21&checkout=2026-06-23&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Bellagio availability</a>
-      </article>
-      <article class="option">
-        <p class="kicker">Flat logistics splurge</p>
-        <h3>Grand Hotel Menaggio</h3>
-        <p>Proper lakefront hotel with easy ferry access. Smooth and grown-up, but not as charming per euro as La Darsena for one night.</p>
-        <p class="price">~EUR 740</p>
-        <p class="small">Booking check: CAD 1,165 + CAD 13 taxes for June 21-22. Standard Double/Twin with Lake View, breakfast included.</p>
-        <div class="meta"><span class="pill">Wow 8/10</span><span class="pill">Ease 9/10</span><span class="pill">Value 6/10</span></div>
-        <ul><li>Best if flat/easy matters most.</li><li>Too expensive relative to La Darsena unless you love Menaggio.</li></ul>
-        <a href="https://www.booking.com/searchresults.en-gb.html?ss=Menaggio%2C%20Lombardy%2C%20Italy&checkin=2026-06-21&checkout=2026-06-23&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Menaggio availability</a>
-      </article>
-      <article class="option">
-        <p class="kicker">Good Tremezzo backup</p>
-        <h3>Hotel Villa Marie</h3>
-        <p>Highly rated, close to Tremezzo center, breakfast included. Less waterfront drama than La Darsena, but a strong backup if La Darsena disappears.</p>
-        <p class="price">~EUR 225</p>
-        <p class="small">Booking check: CAD 352 + CAD 10 taxes for June 21-22. Double with Mountain View, free cancellation.</p>
-        <div class="meta"><span class="pill">Wow 7/10</span><span class="pill">Ease 8/10</span><span class="pill">Value 9/10</span></div>
-        <ul><li>Backup, not the headline.</li><li>Use savings for boat or Da Giacomo lunch.</li></ul>
-        <a href="https://www.booking.com/searchresults.en-gb.html?ss=Tremezzo%2C%20Lombardy%2C%20Italy&checkin=2026-06-21&checkout=2026-06-22&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Tremezzo availability</a>
-      </article>
-      <article class="option">
-        <p class="kicker">Varenna one-night option</p>
-        <h3>Balconi San Giorgio</h3>
-        <p>Central Varenna, breakfast, good location. This is the best Varenna one-night value found, but Tremezzo/Bellagio still feel stronger for the lake-night concept.</p>
-        <p class="price">~EUR 260</p>
-        <p class="small">Booking check: CAD 402 + CAD 10 taxes for June 21-22. Deluxe Double Room with Shower.</p>
-        <div class="meta"><span class="pill">Wow 7/10</span><span class="pill">Ease 9/10</span><span class="pill">Value 8/10</span></div>
-        <ul><li>Best if train convenience matters most.</li><li>Less of a waterfront wow than La Darsena.</li></ul>
-        <a href="https://www.booking.com/searchresults.en-gb.html?ss=Varenna%2C%20Lombardy%2C%20Italy&checkin=2026-06-21&checkout=2026-06-23&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Varenna availability</a>
-      </article>
+
+    <div class="status-label" style="color:var(--booked)">Booked / Milan final night</div>
+    <div class="anchor-card">
+      <div class="anchor-header">
+        <div>
+          <span class="badge badge-booked">Booked & confirmed</span>
+          <div class="card-name">Maison Borella</div>
+          <div class="card-location">Navigli, Milan - Monday 22 June to Tuesday 23 June</div>
+        </div>
+        <div>
+          <div class="price">EUR 245</div>
+          <div class="price-note">1 night / pay later</div>
+        </div>
+      </div>
+      <div class="anchor-body">
+        <div class="copy">
+          <p>This was the right final-night choice. Same hotel as Saturday, but with the stronger room: a Canal View Superior overlooking Naviglio Grande. It keeps the luggage plan simple and gives the last Milan night a prettier finish.</p>
+          <p><strong>Best next move:</strong> message Maison Borella with both confirmation numbers and ask them to connect the stays operationally, especially luggage storage between Sunday morning and Monday evening.</p>
+        </div>
+        <div class="specs">
+          <div class="spec-row"><span class="spec-label">Confirmation</span><span class="spec-value">GP31HF91KF</span></div>
+          <div class="spec-row"><span class="spec-label">Room</span><span class="spec-value">Canal View Superior</span></div>
+          <div class="spec-row"><span class="spec-label">Check-in</span><span class="spec-value">After 14:00</span></div>
+          <div class="spec-row"><span class="spec-label">Check-out</span><span class="spec-value">Before 12:00</span></div>
+          <div class="spec-row"><span class="spec-label">Plan</span><span class="spec-value">Free cancellation / pay later</span></div>
+          <div class="spec-row"><span class="spec-label">Included</span><span class="spec-value">Free buffet breakfast</span></div>
+          <div class="spec-row"><span class="spec-label">On site</span><span class="spec-value">City tax not included</span></div>
+          <div class="spec-row"><span class="spec-label">Cancel by</span><span class="spec-value">3 days before arrival</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-label">Other Monday rooms considered / no longer needed</div>
+    <div class="three-col">
+      <div class="option-card is-alt">
+        <span class="badge badge-booked">Chosen room</span>
+        <div class="option-title">Canal View Superior</div>
+        <div class="option-price">EUR 245</div>
+        <div class="option-price-note">Jun 22-23 / 2 guests</div>
+        <div class="option-body">
+          <p>Booked. Same price as Court Superior, but more romantic: view of Naviglio Grande, elegant, bright, and soundproof.</p>
+        </div>
+      </div>
+      <div class="option-card">
+        <span class="badge badge-alt">Passed</span>
+        <div class="option-title">Maison Borella - Court Superior</div>
+        <div class="option-price">EUR 245</div>
+        <div class="option-price-note">Jun 22-23 / 2 guests</div>
+        <div class="option-body">
+          <p>Same price, quieter internal courtyard. This is the practical backup if Canal View disappears or if you want the calmer sleep after the lake day.</p>
+          <ul><li>Soundproof.</li><li>Garden/courtyard view.</li><li>Less romantic than canal view.</li></ul>
+        </div>
+      </div>
+      <div class="option-card">
+        <span class="badge badge-alt">Passed</span>
+        <div class="option-title">Maison Privee Junior / Senior</div>
+        <div class="option-price">EUR 230 / 290</div>
+        <div class="option-price-note">Jun 22-23 / 2 guests</div>
+        <div class="option-body">
+          <p>Junior was cheaper but less of a final-night finish. Senior was larger, but not worth paying EUR 45 more than Canal View.</p>
+          <ul><li>Junior: value pick.</li><li>Senior: space, not romance.</li><li>Both are 20m from main building.</li></ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="food">
   <div class="shell">
-    <div class="head">
-      <h2>Food Without The Bar Crutch</h2>
-      <p class="note">Paris was stylish restaurants, rooftops, and pretty rooms. Since drinking is not part of the trip, the plan leans on views, dessert, room energy, and one clean lake dinner.</p>
+    <div class="section-header">
+      <div class="eyebrow"><span>Where to eat</span></div>
+      <h2>Food & <em>atmosphere</em></h2>
+      <p class="section-note">No bar needed. This trip should use room energy, views, dessert, and walkability.</p>
     </div>
-    <div class="split">
-      <figure class="photo"><img src="photo1.jpg" alt="Illustrated portrait of MK and YK"></figure>
-      <div class="grid">
-        <article class="card"><h3>Milan: Giacomo Arengario</h3><p>Best Perruche analogue: Duomo setting, view, and enough polish without needing a tasting menu.</p><a href="https://www.giacomoristorante.com/en/giacomo-arengario/" target="_blank" rel="noreferrer">Official</a></article>
-        <article class="card"><h3>Milan: Paper Moon Giardino</h3><p>Pretty, fashionable, relaxed. Closest Milan match to the Pink Mamma/Perruche side of Paris.</p><a href="https://www.papermoonrestaurants.com/paper-moon-giardino.html?lang=en" target="_blank" rel="noreferrer">Official</a></article>
-        <article class="card"><h3>Milan: Marchesi 1824</h3><p>Use this for the no-drink replacement: coffee, pastry, dessert, and Galleria atmosphere.</p><a href="https://www.pasticceriamarchesi.com/ww/en.html" target="_blank" rel="noreferrer">Official</a></article>
-        <article class="card"><h3>Lake: La Darsena Dinner</h3><p>If staying there, dinner becomes effortless: waterfront room, waterfront table, no post-dinner transfer.</p><a href="https://www.ladarsena.it/en/menu/" target="_blank" rel="noreferrer">Official</a></article>
-        <article class="card"><h3>Lake: Da Giacomo al Lago</h3><p>Use this for a glamorous Monday lunch before returning to Milan, especially if the weather is good.</p><a href="https://www.grandhoteltremezzo.com/en/restaurants-bars/da-giacomo-al-lago/" target="_blank" rel="noreferrer">Official</a></article>
-        <article class="card"><h3>Lake: Al Veluu Dinner</h3><p>Still romantic, but better if you are staying there. For one lake night, avoid adding hill/taxi friction unless you really want the view.</p><a href="https://www.alveluu.com/en/book-a-table/" target="_blank" rel="noreferrer">Book a table</a></article>
+    <div class="lake-band"><p>"For Bellagio, do not overcomplicate dinner. The point is being on the lake, not winning a restaurant spreadsheet."</p></div>
+    <div class="three-col">
+      <div class="food-card"><div class="food-city">Milan / dinner</div><div class="food-name">Giacomo Arengario</div><p class="food-desc">Duomo-view dinner. Best Perruche analogue: elegant, visual, memorable without needing drinks.</p><a class="food-link" href="https://www.giacomoristorante.com/en/giacomo-arengario/" target="_blank" rel="noreferrer">Official site -></a></div>
+      <div class="food-card"><div class="food-city">Milan / dinner</div><div class="food-name">Paper Moon Giardino</div><p class="food-desc">Pretty, fashionable, relaxed. Closest Milan match to the Pink Mamma side of the Paris pattern.</p><a class="food-link" href="https://www.papermoonrestaurants.com/paper-moon-giardino.html?lang=en" target="_blank" rel="noreferrer">Official site -></a></div>
+      <div class="food-card"><div class="food-city">Milan / dessert</div><div class="food-name">Marchesi 1824</div><p class="food-desc">The no-drink anchor: coffee, pastry, dessert, and Galleria atmosphere.</p><a class="food-link" href="https://www.pasticceriamarchesi.com/" target="_blank" rel="noreferrer">Official site -></a></div>
+      <div class="food-card"><div class="food-city">Bellagio / dinner</div><div class="food-name">Walkable from Hotel Du Lac</div><p class="food-desc">Prioritize Hotel Du Lac's restaurant or a Bellagio village table. Keep Sunday night frictionless.</p></div>
+      <div class="food-card"><div class="food-city">Lake / lunch</div><div class="food-name">Da Giacomo al Lago</div><p class="food-desc">Use only if Monday timing and weather make Tremezzo easy. Beautiful, but not mandatory.</p><a class="food-link" href="https://www.grandhoteltremezzo.com/en/restaurants-bars/da-giacomo-al-lago/" target="_blank" rel="noreferrer">Official site -></a></div>
+      <div class="food-card"><div class="food-city">Lake / maybe</div><div class="food-name">La Darsena or Al Veluu</div><p class="food-desc">Good options, but now secondary. Hotel Du Lac makes Bellagio the natural dinner base.</p></div>
+    </div>
+    <div style="margin-top:36px">
+      <p class="status-label" style="margin:0 0 12px;color:var(--faint)">Paris reference / vibe to match</p>
+      <div class="paris-strip">
+        <div class="paris-item"><div class="paris-place">Relais Montmartre</div><div class="paris-role">Hotel</div></div>
+        <div class="paris-item"><div class="paris-place">Le Bon Georges</div><div class="paris-role">Dinner</div></div>
+        <div class="paris-item"><div class="paris-place">Perruche</div><div class="paris-role">Rooftop</div></div>
+        <div class="paris-item"><div class="paris-place">Pink Mamma</div><div class="paris-role">Dinner</div></div>
+        <div class="paris-item"><div class="paris-place">Gruppomimo</div><div class="paris-role">Dinner</div></div>
+        <div class="paris-item"><div class="paris-place">Brasserie des Pres</div><div class="paris-role">Dinner</div></div>
       </div>
     </div>
   </div>
@@ -251,61 +447,85 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
 
 <section id="budget">
   <div class="shell">
-    <div class="head">
-      <h2>Budget Shape</h2>
-      <p class="note">Goal: keep the non-flight trip around EUR 3,000 while still making the hotel feel like a real gift. All estimates are for two people.</p>
+    <div class="section-header">
+      <div class="eyebrow"><span>What it costs</span></div>
+      <h2>Budget <em>breakdown</em></h2>
+      <p class="section-note">Hotel spend is coming in well under the EUR 3k ceiling, which leaves room for the things she will actually remember: boat, dinner, and an easy final morning.</p>
     </div>
-    <div class="grid">
-      <article class="card"><h3>Current lead build</h3><p>Maison Borella twice plus La Darsena for one lake night.</p><ul><li>Hotels: about EUR 915</li><li>Food: EUR 650-850</li><li>Boat/villas/ferries/transfers: EUR 550-750</li><li>Total before flights: about EUR 2,150-2,550</li></ul></article>
-      <article class="card"><h3>Upgrade lake build</h3><p>Maison Borella twice plus Hotel Du Lac Bellagio or Grand Hotel Menaggio.</p><ul><li>Hotel Du Lac Bellagio version: about EUR 1,020 hotels total</li><li>Grand Hotel Menaggio version: about EUR 1,375 hotels total</li><li>Only upgrade if the hotel itself feels worth it</li></ul></article>
-      <article class="card"><h3>Where to spend</h3><p>The one-night pivot frees money for the actual memories.</p><ul><li>Private boat or premium ferry/boat window</li><li>One waterfront dinner and one elegant Milan dinner</li><li>Keep luggage painless by storing big bags in Milan</li></ul></article>
+    <div class="budget-cols">
+      <div class="budget-table">
+        <div class="budget-divider"><div class="budget-divider-label">Hotels</div></div>
+        <div class="budget-row"><div><div class="budget-label">Maison Borella</div><div class="budget-note">Sat 20 -> Sun 21 / booked / breakfast</div></div><span class="badge badge-booked">Booked</span><div class="budget-amount">EUR 305</div></div>
+        <div class="budget-row"><div><div class="budget-label">Hotel Du Lac & SPA</div><div class="budget-note">Sun 21 -> Mon 22 / booked / breakfast + SPA</div></div><span class="badge badge-booked">Booked</span><div class="budget-amount">EUR 351.75</div></div>
+        <div class="budget-row"><div><div class="budget-label">Maison Borella</div><div class="budget-note">Mon 22 -> Tue 23 / booked / Canal View Superior</div></div><span class="badge badge-booked">Booked</span><div class="budget-amount">EUR 245</div></div>
+        <div class="budget-row total"><div><div class="budget-label">Booked hotel total</div><div class="budget-note">Before city taxes; known Maison Borella Saturday tax is EUR 20, Hotel Du Lac tax is EUR 6</div></div><div></div><div class="budget-amount">EUR 901.75</div></div>
+        <div class="budget-divider"><div class="budget-divider-label">Food, activities & transfers</div></div>
+        <div class="budget-row"><div><div class="budget-label">Dinners</div><div class="budget-note">Milan x2, Bellagio x1, no wine</div></div><div></div><div class="budget-amount">EUR 400-550</div></div>
+        <div class="budget-row"><div><div class="budget-label">Boat / villas / ferries</div><div class="budget-note">Private boat hour or ferry + gardens</div></div><div></div><div class="budget-amount">EUR 200-350</div></div>
+        <div class="budget-row"><div><div class="budget-label">Transfers, coffee, lunch, misc</div><div class="budget-note">Airport, Milan-Como, Marchesi, lunches</div></div><div></div><div class="budget-amount">EUR 450-750</div></div>
+        <div class="budget-row total"><div><div class="budget-label">Total before flights</div></div><div></div><div class="budget-amount">~EUR 1,950-2,550</div></div>
+      </div>
+      <div class="grid">
+        <div class="note-card" style="border-color:rgba(74,158,110,.25);background:var(--booked-bg)"><p class="status-label" style="margin:0 0 10px;color:var(--booked)">Locked in</p><div class="price" style="font-size:34px;text-align:left">EUR 901.75</div><p class="food-desc">All hotel rooms are booked: Maison Borella Saturday, Hotel Du Lac Sunday, Maison Borella Canal View Monday.</p></div>
+        <div class="note-card"><p class="status-label" style="margin:0 0 10px;color:var(--gold)">My take</p><p class="food-desc">This is the right hotel shape. You spent on the exact places that reduce friction: same Milan hotel twice, lakefront Bellagio in the middle, canal view for the final Milan night.</p></div>
+        <div class="note-card" style="border-color:rgba(224,122,58,.22);background:rgba(224,122,58,.06)"><p class="status-label" style="margin:0 0 10px;color:var(--tobook)">Unknown</p><p class="food-desc">Flights are not included. Expect roughly EUR 300-700+ for two depending on timing, airline, and luggage.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="book">
   <div class="shell">
-    <div class="head">
-      <h2>Booking Order</h2>
-      <p class="note">Lock cancellable hotels first, then flights and food. This page is now based on actual availability checks, so the clock matters.</p>
+    <div class="section-header">
+      <div class="eyebrow"><span>Action list</span></div>
+      <h2>What is still<br><em>to book</em></h2>
+      <p class="section-note">Hotels are done. The list is now about making the trip smooth and memorable.</p>
     </div>
     <div class="checklist">
-      <div class="check"><span class="box"></span><div><strong>1. Hold Maison Borella twice</strong><span>Saturday night and Monday night. Ask if they can store luggage Sunday morning to Monday evening.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>2. Hold La Darsena</strong><span>One room was showing for Sunday June 21 with breakfast. This is the clean one-night lake play.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>3. Pack overnight bag</strong><span>Take only what you need to Como. Big suitcase stays in Milan if the hotel agrees.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>4. Book flights</strong><span>Saturday morning London to Milan; Tuesday afternoon Milan to London. Avoid a return before 2:30pm.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>5. Reserve one lake moment</strong><span>Private boat for 1 hour or a clean ferry/villa plan. This is the memory anchor.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>6. Food</strong><span>Milan: Giacomo Arengario or Paper Moon. Lake: La Darsena dinner, Da Giacomo al Lago lunch, or Al Veluu only if worth the taxi.</span></div></div>
+      <div class="check-item"><div class="check-box done"></div><div><div class="check-title">Maison Borella - Saturday</div><div class="check-desc">Booked: Jun 20-21, Maison Privee Senior, EUR 305, free cancellation/pay later, breakfast included.</div></div></div>
+      <div class="check-item"><div class="check-box done"></div><div><div class="check-title">Hotel Du Lac & SPA - Bellagio</div><div class="check-desc">Booked: Jun 21-22, Superior room, EUR 351.75, breakfast and SPA access. Free cancellation until Jun 5.</div></div></div>
+      <div class="check-item"><div class="check-box done"></div><div><div class="check-title">Maison Borella - Monday</div><div class="check-desc">Booked: Jun 22-23, Canal View Superior, EUR 245, free cancellation/pay later, breakfast included.</div></div></div>
+      <div class="check-item"><div class="check-box urgent"></div><div><div class="check-title">Confirm luggage storage</div><div class="check-desc">Ask Maison Borella to store the large suitcase Sunday morning to Monday evening while you take one overnight bag to Lake Como.</div></div></div>
+      <div class="check-item"><div class="check-box"></div><div><div class="check-title">Book flights</div><div class="check-desc">Saturday London to Milan; Tuesday Milan to London. Prefer Linate if schedule works. Avoid Tuesday return before 2:30pm.</div></div></div>
+      <div class="check-item"><div class="check-box"></div><div><div class="check-title">Reserve dinners</div><div class="check-desc">Saturday Milan: Giacomo Arengario or Paper Moon. Sunday Bellagio: walkable from Hotel Du Lac.</div></div></div>
+      <div class="check-item"><div class="check-box"></div><div><div class="check-title">Reserve Hotel Du Lac SPA slot</div><div class="check-desc">Complimentary access is included, but the hotel asks guests to reserve the session in advance.</div></div></div>
+      <div class="check-item"><div class="check-box"></div><div><div class="check-title">Pick Monday lake moment</div><div class="check-desc">Private boat hour from Bellagio, Villa Melzi by foot, or ferry to Varenna for Villa Monastero.</div></div></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="shell">
-    <div class="head">
-      <h2>Planner Notes</h2>
-      <p class="note">Availability changes fast. Re-check before booking, but the hotel comparison reflects live Booking.com checks made after the Paris reservation screenshots were reviewed.</p>
+    <div class="section-header">
+      <div class="eyebrow"><span>Planning notes</span></div>
+      <h2>How this<br><em>was built</em></h2>
     </div>
     <div class="sources">
-      <p>Paris pattern came from reservation screenshots: Relais Montmartre, Le Bon Georges, Perruche, Pink Mamma, Gruppomimo, Brasserie des Pres.</p>
-      <p>Hotel availability checked on Booking.com for Maison Borella, La Darsena, Bellagio, Menaggio, Tremezzo, Varenna, and Lenno.</p>
-      <p>Al Veluu remains a romantic dinner/backup idea, but it did not surface in the one-night Booking.com availability pass.</p>
-      <p>Restaurant candidates checked through official restaurant pages where possible.</p>
-      <p>Prices are estimates converted from Booking.com CAD display to approximate EUR.</p>
-      <p>Lake Como image: Bellagio viewed from Tremezzo, Wikimedia Commons, CC BY-SA 3.0.</p>
-      <p>Final bookings should confirm cancellation policy, tax, room type, and arrival logistics.</p>
+      <p>Maison Borella confirmation from Gmail: GP00QX60KI, Maison Privee Senior, Jun 20-21, EUR 305 total, free cancellation/pay later, free buffet breakfast, EUR 20 city tax on site.</p>
+      <p>Hotel Du Lac confirmation from Gmail: 2026053148907555, Superior room for 2 adults, Jun 21-22, EUR 351.75 room total, EUR 3 per person city tax, breakfast and complimentary SPA access included.</p>
+      <p>Maison Borella Monday confirmation from Gmail: GP31HF91KF, Canal View Superior, Jun 22-23, EUR 245 total, free cancellation/pay later, free buffet breakfast, city tax not included.</p>
+      <p>Maison Borella Jun 22 options considered before booking: Maison Privee Junior EUR 230, Court Superior EUR 245, Canal View Superior EUR 245, Maison Privee Senior EUR 290. Canal View Superior was selected.</p>
+      <p>Paris reference: Relais Montmartre, Le Bon Georges, Perruche, Pink Mamma, Gruppomimo, Brasserie des Pres. Same vibe, no drinks required.</p>
+      <p>Lake Como hero image: Bellagio viewed from Tremezzo, Wikimedia Commons, CC BY-SA 3.0.</p>
     </div>
   </div>
 </section>
 </main>
 
-<footer><div class="shell">Private page for MK / YK. Passcode: Paris clue.</div></footer>
+<footer>
+  <div class="shell">
+    <div>Private planning page for MK / YK - Lake Como June 2026</div>
+    <div style="color:var(--line2);font-size:11px;letter-spacing:.2em;text-transform:uppercase">Passcode: Paris clue</div>
+  </div>
+</footer>
 
 <script>
-const pass=document.getElementById('pass'),lock=document.getElementById('lock');
-function unlock(){lock.classList.add('hidden');sessionStorage.setItem('italy-auth','1')}
-if(sessionStorage.getItem('italy-auth')==='1')unlock();
-pass.addEventListener('input',()=>{if(pass.value.trim().toLowerCase()==='paris')unlock()});
+(function(){
+  var pass=document.getElementById('pass'),lock=document.getElementById('lock');
+  function unlock(){lock.classList.add('hidden');sessionStorage.setItem('italy-auth','1')}
+  if(sessionStorage.getItem('italy-auth')==='1')unlock();
+  pass.addEventListener('input',function(){if(pass.value.trim().toLowerCase()==='paris')unlock()});
+})();
 </script>
 </body>
 </html>
