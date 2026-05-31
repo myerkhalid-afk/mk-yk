@@ -7,11 +7,11 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0b0b0a;--ink:#f4efe4;--muted:#9a9388;--line:#28231d;
-  --card:#141311;--cream:#e8ddc8;--gold:#c8a665;--lake:#6aa0a3;--terra:#be6948;
+  --bg:#07100f;--ink:#f7efe1;--muted:#afa797;--line:#2a322c;
+  --card:#111815;--cream:#f1dfbd;--gold:#d2a85a;--lake:#8fbec0;--terra:#c97b52;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
+body{background:linear-gradient(180deg,#07100f,#0e1512 48%,#070b0a);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;overflow-x:hidden}
 a{color:var(--cream);text-decoration-color:rgba(200,166,101,.55);text-underline-offset:4px}
 .lock{position:fixed;inset:0;z-index:20;background:#0b0b0a;display:flex;align-items:center;justify-content:center;padding:24px;transition:.35s}
 .lock.hidden{opacity:0;visibility:hidden;pointer-events:none}
@@ -21,43 +21,58 @@ a{color:var(--cream);text-decoration-color:rgba(200,166,101,.55);text-underline-
 .lock input{width:min(260px,80vw);margin:auto;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);padding:12px;text-align:center;font-size:22px;letter-spacing:.35em;outline:0}
 .lock input:focus{border-color:var(--gold)}
 .shell{width:min(1180px,calc(100% - 36px));margin:auto}
-nav{position:fixed;z-index:10;top:0;left:0;right:0;padding:18px 0;background:linear-gradient(#0b0b0af0,#0b0b0a00)}
+nav{position:fixed;z-index:10;top:0;left:0;right:0;padding:18px 0;background:linear-gradient(#07100fed,#07100f00);backdrop-filter:blur(8px)}
 nav .shell{display:flex;justify-content:space-between;align-items:center;gap:18px}
 .brand{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--cream)}
 .links{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end;font-size:13px;color:var(--muted)}
-.hero{min-height:100vh;display:grid;align-items:end;padding:110px 0 46px;position:relative;border-bottom:1px solid var(--line)}
-.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 24%,rgba(106,160,163,.18),transparent 28%),radial-gradient(circle at 18% 75%,rgba(190,105,72,.15),transparent 32%);pointer-events:none}
+.hero{min-height:100vh;display:grid;align-items:end;padding:110px 0 46px;position:relative;border-bottom:1px solid var(--line);background-image:linear-gradient(90deg,rgba(7,16,15,.95) 0%,rgba(7,16,15,.72) 38%,rgba(7,16,15,.30) 72%,rgba(7,16,15,.68) 100%),linear-gradient(180deg,rgba(7,16,15,.10),rgba(7,16,15,.86)),url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,16,15,.06),rgba(7,16,15,.78));pointer-events:none}
 .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);gap:44px;align-items:end}
-h1{font-family:Georgia,serif;font-size:clamp(58px,11vw,124px);line-height:.88;font-weight:400;letter-spacing:0;color:var(--cream)}
+h1{font-family:Georgia,serif;font-size:clamp(58px,11vw,118px);line-height:.88;font-weight:400;letter-spacing:0;color:var(--cream);text-shadow:0 18px 70px #000}
 .lede{max-width:720px;margin-top:24px;font-size:clamp(18px,2vw,24px);color:#cfc6b7}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .btn{display:inline-flex;align-items:center;min-height:44px;border:1px solid var(--cream);border-radius:5px;padding:10px 16px;text-decoration:none;font-weight:750;background:var(--cream);color:#15130f}
 .btn.ghost{background:transparent;color:var(--cream);border-color:var(--line)}
-.portrait{border:1px solid var(--line);background:var(--card);border-radius:8px;overflow:hidden;box-shadow:0 24px 70px #0008}
-.portrait img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;filter:saturate(.9)}
+.portrait{border:1px solid rgba(241,223,189,.20);background:rgba(17,24,21,.82);border-radius:8px;overflow:hidden;box-shadow:0 30px 90px #000a;backdrop-filter:blur(8px)}
+.portrait img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;filter:saturate(.85) contrast(1.04)}
 .portrait p{padding:15px 17px;color:var(--muted);font-size:13px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);position:relative;background:#0e0d0bc7}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);position:relative;background:#0c1412e8}
 .stat{padding:18px;border-right:1px solid var(--line);min-height:86px}
 .stat:last-child{border-right:0}.stat b{display:block;color:var(--cream);font-size:18px}.stat span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:5px}
-section{padding:72px 0;border-bottom:1px solid var(--line)}
+section{padding:78px 0;border-bottom:1px solid var(--line)}
 .head{display:grid;grid-template-columns:.8fr .45fr;gap:34px;align-items:end;margin-bottom:30px}
 h2{font-family:Georgia,serif;font-size:clamp(36px,6vw,66px);line-height:1;font-weight:400;color:var(--cream);letter-spacing:0}
 .note{color:var(--muted)}
 .days{display:grid;gap:12px}
-.day{display:grid;grid-template-columns:150px 1fr 260px;gap:20px;padding:22px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(135deg,#15130f,#11100e)}
+.day{display:grid;grid-template-columns:150px 1fr 260px;gap:20px;padding:22px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(135deg,rgba(24,32,27,.96),rgba(12,18,16,.96));box-shadow:0 18px 50px #0004}
 .day h3{font-size:20px;color:var(--cream);margin-bottom:3px}.day p{color:var(--muted)}
 .tags{display:flex;gap:8px;flex-wrap:wrap;align-content:start}.tag{border:1px solid rgba(106,160,163,.35);color:#bfe1e1;background:rgba(106,160,163,.09);border-radius:999px;font-size:12px;font-weight:750;padding:5px 9px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{border:1px solid var(--line);border-radius:8px;background:var(--card);padding:20px;box-shadow:0 14px 34px #0004;border-top:4px solid var(--lake)}
+.card{border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,#121b17,#0d1210);padding:20px;box-shadow:0 18px 46px #0005;border-top:4px solid var(--lake)}
 .card:nth-child(2n){border-top-color:var(--terra)}.card:nth-child(3n){border-top-color:var(--gold)}
 .card h3{font-size:21px;margin-bottom:10px;color:var(--cream)}.card p,.card li{color:var(--muted)}.card ul{padding-left:18px;margin-top:10px}
+.option-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.option{position:relative;border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,rgba(21,31,27,.98),rgba(10,15,13,.98));padding:22px;box-shadow:0 22px 60px #0007;overflow:hidden}
+.option:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--lake));opacity:.8}
+.option.lead{border-color:rgba(200,166,101,.72);box-shadow:0 24px 70px rgba(200,166,101,.12)}
+.option h3{font-size:24px;color:var(--cream);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+.pill{border:1px solid rgba(200,166,101,.34);border-radius:999px;color:var(--cream);background:rgba(200,166,101,.08);font-size:12px;font-weight:750;padding:5px 9px}
+.price{font-size:28px;line-height:1;color:var(--gold);font-family:Georgia,serif;margin:10px 0 5px}
+.small{font-size:13px;color:var(--muted)}
+.score{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}
+.score div{border:1px solid var(--line);border-radius:6px;padding:10px;background:#0e0d0b}
+.score b{display:block;color:var(--cream);font-size:18px}.score span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.decision{border:1px solid rgba(143,190,192,.45);border-radius:8px;background:linear-gradient(135deg,rgba(143,190,192,.13),rgba(210,168,90,.08));padding:18px;margin-bottom:18px;color:#e2f0ed}
+.lake-panel{min-height:320px;border:1px solid var(--line);border-radius:8px;background-image:linear-gradient(180deg,rgba(7,16,15,.08),rgba(7,16,15,.72)),url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center;box-shadow:0 28px 80px #0008;display:flex;align-items:flex-end;padding:22px;margin-bottom:18px}
+.lake-panel p{max-width:620px;color:#efe5d0;font-size:18px;text-shadow:0 6px 26px #000}
 .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px;align-items:start}
 .photo{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card);box-shadow:0 24px 70px #0008}.photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.check{display:grid;grid-template-columns:28px 1fr;gap:11px;padding:16px;border:1px solid var(--line);border-radius:8px;background:#11100e}.box{width:22px;height:22px;border:2px solid var(--terra);border-radius:5px;margin-top:1px}.check strong{display:block;color:var(--cream);margin-bottom:3px}.check span{color:var(--muted);font-size:14px}
 .sources{columns:2;column-gap:32px;color:var(--muted);font-size:14px}.sources p{break-inside:avoid;margin-bottom:10px}
 footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
 @media(max-width:850px){
-  .shell{width:min(100% - 24px,1180px)}nav .shell{align-items:flex-start;flex-direction:column}.hero-grid,.head,.split{grid-template-columns:1fr}.portrait img{aspect-ratio:16/10}.stats{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--line)}.day{grid-template-columns:1fr}.grid,.checklist{grid-template-columns:1fr}.sources{columns:1}
+  .shell{width:min(100% - 24px,1180px)}nav .shell{align-items:flex-start;flex-direction:column}.hero-grid,.head,.split{grid-template-columns:1fr}.portrait img{aspect-ratio:16/10}.stats{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--line)}.day{grid-template-columns:1fr}.grid,.option-grid,.checklist{grid-template-columns:1fr}.sources{columns:1}
 }
 </style>
 </head>
@@ -75,7 +90,7 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
   <div class="shell">
     <div class="brand">MK / YK</div>
     <div class="links">
-      <a href="#plan">Plan</a><a href="#stays">Stays</a><a href="#food">Food</a><a href="#book">Book</a>
+      <a href="#plan">Plan</a><a href="#stays">Hotels</a><a href="#food">Food</a><a href="#budget">Budget</a><a href="#book">Book</a>
     </div>
   </div>
 </nav>
@@ -83,26 +98,26 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
 <header class="hero">
   <div class="shell hero-grid">
     <div>
-      <p class="kicker">London -> Milan -> Lake Como / June 20-23, 2026</p>
-      <h1>Four days, done like it matters.</h1>
-      <p class="lede">A polished, low-friction trip built around one proper Milan night, two soft lake days, and the kind of dinner reservations that make the whole thing feel intentional.</p>
+      <p class="kicker">Availability checked / June 20-23, 2026</p>
+      <h1>Milan first, then the lake does the rest.</h1>
+      <p class="lede">Paris worked because it had stylish rooms, pretty restaurants, and movement without chaos. This version keeps that feeling: Maison Borella in Milan, then a lake stay chosen for the right balance of wow and ease.</p>
       <div class="actions">
-        <a class="btn" href="#book">Book the anchors</a>
-        <a class="btn ghost" href="#food">Restaurant shortlist</a>
+        <a class="btn" href="#stays">Compare hotels</a>
+        <a class="btn ghost" href="#budget">See budget</a>
       </div>
     </div>
     <figure class="portrait">
       <img src="photo2.jpg" alt="Stylized portrait of MK and YK">
-      <p>The Paris/Valentine's pattern is the reference point: romantic, not chaotic; personal, not generic.</p>
+      <p>Reference point: Relais Montmartre, Le Bon Georges, Perruche, Pink Mamma, Gruppomimo, Brasserie des Pres. No drinking needed; the room, view, food, and pacing do the work.</p>
     </figure>
   </div>
 </header>
 
 <div class="stats">
-      <div class="stat"><span>Base</span><b>Milan 1 / Varenna 2</b></div>
-  <div class="stat"><span>Flights</span><b>Morning out / afternoon back</b></div>
-  <div class="stat"><span>Dinner</span><b>Seta, Cracco, or Mistral</b></div>
-  <div class="stat"><span>Upgrade</span><b>Short private boat</b></div>
+  <div class="stat"><span>Current lead</span><b>Maison Borella / Al Veluu</b></div>
+  <div class="stat"><span>Budget target</span><b>About EUR 3k max</b></div>
+  <div class="stat"><span>Lake choice</span><b>Wow terrace vs flat logistics</b></div>
+  <div class="stat"><span>No-drink plan</span><b>Views, dessert, boat, dinner</b></div>
 </div>
 
 <main>
@@ -115,18 +130,18 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
     <div class="days">
       <article class="day">
         <div><span class="kicker">Saturday</span><h3>June 20</h3></div>
-        <p>Morning flight London to Milan. Drop bags, Duomo terraces or Brera, aperitivo, then a serious dinner. Sleep in Milan near Brera, Duomo, or Porta Venezia.</p>
-        <div class="tags"><span class="tag">Duomo</span><span class="tag">Brera</span><span class="tag">Aperitivo</span><span class="tag">Milan dinner</span></div>
+        <p>Morning flight London to Milan. Check into Maison Borella in Navigli, then keep the day photogenic and easy: Duomo/Galleria, coffee or dessert, and a pretty dinner instead of a drinks-led night.</p>
+        <div class="tags"><span class="tag">Maison Borella</span><span class="tag">Duomo</span><span class="tag">Dessert</span><span class="tag">Milan dinner</span></div>
       </article>
       <article class="day">
         <div><span class="kicker">Sunday</span><h3>June 21</h3></div>
-        <p>Train Milano Centrale to Varenna-Esino. Check in, ferry to Bellagio, Villa Melzi, lakeside walk. Dinner should be near the sleep base so you are not hostage to late ferry timing.</p>
-        <div class="tags"><span class="tag">Varenna</span><span class="tag">Bellagio</span><span class="tag">Villa Melzi</span><span class="tag">Easy dinner</span></div>
+        <p>Train Milan to the lake, then transfer cleanly to the chosen base. If Al Veluu wins, do not haul luggage uphill: arrange taxi/private transfer. Make Sunday about arrival, terrace, and dinner with a view.</p>
+        <div class="tags"><span class="tag">Lake arrival</span><span class="tag">No luggage drama</span><span class="tag">Terrace</span><span class="tag">View dinner</span></div>
       </article>
       <article class="day">
         <div><span class="kicker">Monday</span><h3>June 22</h3></div>
-        <p>Villa Monastero in the morning. Ferry to Tremezzo or Lenno. Book Villa del Balbianello only if the timed-entry and ferry logistics line up. Otherwise use the day for lunch, gardens, and a boat window.</p>
-        <div class="tags"><span class="tag">Villa Monastero</span><span class="tag">Tremezzo</span><span class="tag">Balbianello</span><span class="tag">Boat</span></div>
+        <p>Central-lake day: Bellagio/Varenna by ferry or boat, Villa Melzi or Villa Monastero, then one proper memory anchor. A 1-hour private boat beats adding another expensive meal.</p>
+        <div class="tags"><span class="tag">Bellagio</span><span class="tag">Varenna</span><span class="tag">Villa garden</span><span class="tag">Private boat</span></div>
       </article>
       <article class="day">
         <div><span class="kicker">Tuesday</span><h3>June 23</h3></div>
@@ -140,13 +155,76 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
 <section id="stays">
   <div class="shell">
     <div class="head">
-      <h2>Where To Sleep</h2>
-      <p class="note">The lake base is the key decision. For this length of trip, do not switch lake towns and do not base in Como town unless flights force it.</p>
+      <h2>Hotel Decision Board</h2>
+      <p class="note">Checked for 2 adults, 1 room. Milan: June 20-21. Lake Como: June 21-23. Prices shown from availability checks, converted roughly from CAD to EUR.</p>
     </div>
-    <div class="grid">
-      <article class="card"><h3>Best overall: Varenna</h3><p>Pretty, walkable, direct train from Milan, easy ferries to Bellagio and Menaggio. This is the right answer without a car.</p><ul><li>Stay near the waterfront or train-side edge.</li><li>Reserve dinners early; the town is small.</li></ul></article>
-      <article class="card"><h3>Splurge: Tremezzo</h3><p>Grand-hotel glamour and stronger lakefront dining. Pick this if the hotel itself is part of the gift.</p><ul><li>Grand Hotel Tremezzo area is the clean luxury play.</li><li>Confirm evening ferries or private transfer.</li></ul></article>
-      <article class="card"><h3>Avoid: Como town</h3><p>Convenient, but less special for this trip. It works for logistics, not for the memory you are trying to make.</p><ul><li>Use only for a late arrival.</li><li>The central lake is the point.</li></ul></article>
+    <div class="lake-panel">
+      <p>The mood we are choosing between: a terrace above Tremezzo with the lake spread out below, or a flatter stay right by the ferries. Both can work; the wrong move is paying for convenience and losing the feeling.</p>
+    </div>
+    <div class="decision">
+      Current planner read: Maison Borella is the Milan pick. On the lake, Al Veluu is the best romantic/wow option, while Hotel Bellagio or Grand Hotel Menaggio are the only smoother alternatives worth considering. Do not switch to a mediocre flatter hotel just to avoid a hill.
+    </div>
+    <div class="option-grid">
+      <article class="option lead">
+        <p class="kicker">Lake lead / most romantic</p>
+        <h3>Al Veluu - Suite Crocione</h3>
+        <p>Panoramic suite above Tremezzo with private lake-view terrace, living room, fireplace, kitchen, king bedroom, and restaurant downstairs. This is the "I found something special" choice.</p>
+        <p class="price">~EUR 750</p>
+        <p class="small">Booking check: CAD 1,157 + CAD 19 taxes for 2 nights. Room shown as Junior Suite with Terrace; official suite details match Suite Crocione at about 60 sqm.</p>
+        <div class="meta"><span class="pill">Wow 9/10</span><span class="pill">Ease 7/10</span><span class="pill">Value 9/10</span></div>
+        <ul><li>Best if the room/terrace is the emotional center.</li><li>Arrange taxi/private transfer for luggage.</li><li>Book dinner at Al Veluu for one night.</li></ul>
+        <a href="https://www.alveluu.com/en/suites-rooms-tremezzina/" target="_blank" rel="noreferrer">Official suite details</a>
+      </article>
+      <article class="option">
+        <p class="kicker">Milan lead / Paris texture</p>
+        <h3>Maison Borella - Navigli</h3>
+        <p>Boutique Milan stay in an 18th-century canal-side building. It gives the Milan night atmosphere instead of a generic business-hotel feel.</p>
+        <p class="price">~EUR 360</p>
+        <p class="small">Booking check: CAD 540 + CAD 32 taxes for 1 night. Deluxe Double/Twin Annex, breakfast included, free cancellation before June 17.</p>
+        <div class="meta"><span class="pill">Wow 7.5/10</span><span class="pill">Ease 8/10</span><span class="pill">Value 8/10</span></div>
+        <ul><li>Request a quiet/courtyard room.</li><li>Works well with Duomo/Galleria and dinner.</li><li>Best Milan option found for mood vs price.</li></ul>
+        <a href="https://www.booking.com/hotel/it/maison-borella.en-gb.html?checkin=2026-06-20&checkout=2026-06-21&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Booking details</a>
+      </article>
+      <article class="option">
+        <p class="kicker">Lake smoother alternative</p>
+        <h3>Hotel Bellagio - Lake View</h3>
+        <p>Central Bellagio, lake-view room, breakfast, and strong location. Better ferry access than Al Veluu, but Bellagio has stairs and more crowds.</p>
+        <p class="price">~EUR 675</p>
+        <p class="small">Booking check: CAD 1,061 + CAD 13 taxes for 2 nights. Superior Double Room with Lake View.</p>
+        <div class="meta"><span class="pill">Wow 8/10</span><span class="pill">Ease 8/10</span><span class="pill">Value 8/10</span></div>
+        <ul><li>Switch here if ferry convenience beats terrace privacy.</li><li>Good for wandering after dinner.</li><li>Still feels like classic Lake Como.</li></ul>
+        <a href="https://www.booking.com/searchresults.en-gb.html?ss=Bellagio%2C%20Lombardy%2C%20Italy&checkin=2026-06-21&checkout=2026-06-23&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Bellagio availability</a>
+      </article>
+      <article class="option">
+        <p class="kicker">Smoothest proper hotel</p>
+        <h3>Grand Hotel Menaggio</h3>
+        <p>Lakefront, ferry-friendly, flatter logistics, real hotel feel. Less intimate than Al Veluu, but easier on arrival and departure.</p>
+        <p class="price">~EUR 900</p>
+        <p class="small">Booking check: CAD 1,408 + CAD 26 taxes for 2 nights. Standard Double/Twin, breakfast included.</p>
+        <div class="meta"><span class="pill">Wow 8/10</span><span class="pill">Ease 9/10</span><span class="pill">Value 7/10</span></div>
+        <ul><li>Best if smoothness is the priority.</li><li>Menaggio is practical, less cinematic than Tremezzo/Bellagio.</li><li>Costs more than Al Veluu for less room drama.</li></ul>
+        <a href="https://www.booking.com/searchresults.en-gb.html?ss=Menaggio%2C%20Lombardy%2C%20Italy&checkin=2026-06-21&checkout=2026-06-23&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Menaggio availability</a>
+      </article>
+      <article class="option">
+        <p class="kicker">Available but not a switch</p>
+        <h3>Hotel Bazzoni - Tremezzo</h3>
+        <p>Central Tremezzo with lake-view balcony and a low price. Useful fallback, but the review score makes it feel like a compromise rather than a wow.</p>
+        <p class="price">~EUR 510</p>
+        <p class="small">Booking check: CAD 788 + CAD 19 taxes for 2 nights. Double Room with Lake View and Balcony. Review score 7.7.</p>
+        <div class="meta"><span class="pill">Wow 6.5/10</span><span class="pill">Ease 8/10</span><span class="pill">Value 7/10</span></div>
+        <ul><li>Only use if budget suddenly matters more than vibe.</li><li>Do not choose it just to avoid Al Veluu's hill.</li></ul>
+        <a href="https://www.hotelbazzonitremezzo.com/the-hotel" target="_blank" rel="noreferrer">Official hotel site</a>
+      </article>
+      <article class="option">
+        <p class="kicker">Not viable for this budget</p>
+        <h3>Varenna lakefront hotels</h3>
+        <p>Varenna is beautiful and logistically great, but the checked availability is either sold out or too expensive for this version of the trip.</p>
+        <p class="price">EUR 2,280-3,580+</p>
+        <p class="small">Casa Du Lac surfaced around CAD 5,655 + tax; Villa Cipressi around CAD 3,594 + tax for 2 nights.</p>
+        <div class="meta"><span class="pill">Wow 8/10</span><span class="pill">Ease 9/10</span><span class="pill">Value 3/10</span></div>
+        <ul><li>Skip unless a cancellation creates a sane price.</li><li>Keep Varenna as a day/ferry stop instead.</li></ul>
+        <a href="https://www.booking.com/searchresults.en-gb.html?ss=Varenna%2C%20Lombardy%2C%20Italy&checkin=2026-06-21&checkout=2026-06-23&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noreferrer">Varenna availability</a>
+      </article>
     </div>
   </div>
 </section>
@@ -154,19 +232,33 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
 <section id="food">
   <div class="shell">
     <div class="head">
-      <h2>Restaurant Shortlist</h2>
-      <p class="note">Book one high-conviction dinner, one lake-view lunch, and one easy local dinner. Everything else can stay flexible.</p>
+      <h2>Food Without The Bar Crutch</h2>
+      <p class="note">Paris was stylish restaurants, rooftops, and pretty rooms. Since drinking is not part of the trip, the plan leans on views, dessert, room energy, and one clean lake dinner.</p>
     </div>
     <div class="split">
       <figure class="photo"><img src="photo1.jpg" alt="Illustrated portrait of MK and YK"></figure>
       <div class="grid">
-        <article class="card"><h3>Milan: Seta</h3><p>Two-star Mandarin Oriental dinner. Polished, date-night serious, and the most Paris-level Milan option.</p><a href="https://guide.michelin.com/gb/en/lombardia/milano/restaurant/seta-by-antonio-guida">Michelin</a></article>
-        <article class="card"><h3>Milan: Cracco</h3><p>Iconic Galleria location, one star, and window-table potential. Best "we are in Milan" energy.</p><a href="https://guide.michelin.com/en/lombardia/milano/restaurant/cracco">Michelin</a></article>
-        <article class="card"><h3>Milan: Paper Moon Giardino</h3><p>Elegant garden setting in the fashion district. Better if you want glamour without tasting-menu intensity.</p><a href="https://www.papermoonrestaurants.com/paper-moon-giardino.html?lang=en">Official</a></article>
-        <article class="card"><h3>Lake: Mistral</h3><p>Bellagio grand-hotel atmosphere, panoramic setting, evening piano energy. The most cinematic dinner choice.</p><a href="https://guide.michelin.com/us/en/lombardia/bellagio/restaurant/mistral126374">Michelin</a></article>
-        <article class="card"><h3>Lake: Da Giacomo al Lago</h3><p>Grand Hotel Tremezzo's glamorous seafood lido. Ideal for Monday lunch or dinner if the weather is good.</p><a href="https://www.grandhoteltremezzo.com/en/restaurants-bars/da-giacomo-al-lago/">Official</a></article>
-        <article class="card"><h3>Lake: La Darsena</h3><p>Directly on the water in Tremezzo, more intimate than the big-hotel move, and strong for a long lunch.</p><a href="https://www.ladarsena.it/en/menu/">Official</a></article>
+        <article class="card"><h3>Milan: Giacomo Arengario</h3><p>Best Perruche analogue: Duomo setting, view, and enough polish without needing a tasting menu.</p><a href="https://www.giacomoristorante.com/en/giacomo-arengario/" target="_blank" rel="noreferrer">Official</a></article>
+        <article class="card"><h3>Milan: Paper Moon Giardino</h3><p>Pretty, fashionable, relaxed. Closest Milan match to the Pink Mamma/Perruche side of Paris.</p><a href="https://www.papermoonrestaurants.com/paper-moon-giardino.html?lang=en" target="_blank" rel="noreferrer">Official</a></article>
+        <article class="card"><h3>Milan: Marchesi 1824</h3><p>Use this for the no-drink replacement: coffee, pastry, dessert, and Galleria atmosphere.</p><a href="https://www.pasticceriamarchesi.com/ww/en.html" target="_blank" rel="noreferrer">Official</a></article>
+        <article class="card"><h3>Lake: Al Veluu Dinner</h3><p>If staying there, book one sunset dinner. It turns the hotel choice into a complete romantic moment.</p><a href="https://www.alveluu.com/en/book-a-table/" target="_blank" rel="noreferrer">Book a table</a></article>
+        <article class="card"><h3>Lake: Da Giacomo al Lago</h3><p>Glamorous lakefront lunch/dinner at Grand Hotel Tremezzo. Great if you want one polished lake meal away from the hotel.</p><a href="https://www.grandhoteltremezzo.com/en/restaurants-bars/da-giacomo-al-lago/" target="_blank" rel="noreferrer">Official</a></article>
+        <article class="card"><h3>Lake: La Darsena</h3><p>No hotel availability, but the restaurant is still a strong waterfront option if reservations line up.</p><a href="https://www.ladarsena.it/en/menu/" target="_blank" rel="noreferrer">Official</a></article>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="budget">
+  <div class="shell">
+    <div class="head">
+      <h2>Budget Shape</h2>
+      <p class="note">Goal: keep the non-flight trip around EUR 3,000 while still making the hotel feel like a real gift. All estimates are for two people.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><h3>Current lead build</h3><p>Maison Borella plus Al Veluu Suite Crocione.</p><ul><li>Hotels: about EUR 1,110</li><li>Food: EUR 650-800</li><li>Boat/villas/ferries/transfers: EUR 550-750</li><li>Total before flights: about EUR 2,300-2,700</li></ul></article>
+      <article class="card"><h3>Smoother lake build</h3><p>Maison Borella plus Hotel Bellagio or Grand Hotel Menaggio.</p><ul><li>Hotel Bellagio version: about EUR 1,035 hotels total</li><li>Grand Hotel Menaggio version: about EUR 1,260 hotels total</li><li>Better luggage/ferry ease, less private terrace wow</li></ul></article>
+      <article class="card"><h3>Where to spend</h3><p>Spend on the lake room and one boat/view moment. Do not stack expensive restaurants.</p><ul><li>1 private boat hour beats a third fancy meal</li><li>Book one lake-view dinner</li><li>Use Milan for atmosphere and dessert</li></ul></article>
     </div>
   </div>
 </section>
@@ -175,15 +267,15 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
   <div class="shell">
     <div class="head">
       <h2>Booking Order</h2>
-      <p class="note">Lock the constraints first, then the romance. Flights and hotels determine the whole shape.</p>
+      <p class="note">Lock cancellable hotels first, then flights and food. This page is now based on actual availability checks, so the clock matters.</p>
     </div>
     <div class="checklist">
-      <div class="check"><span class="box"></span><div><strong>1. Flights</strong><span>Saturday morning London to Milan; Tuesday afternoon Milan to London. LIN is best for Milan city, MXP is useful for Lake logistics.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>2. Lake hotel</strong><span>Two nights in Varenna first. If making the hotel the gift, price Tremezzo before Bellagio.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>3. Milan dinner</strong><span>Seta for formal, Cracco for iconic, Paper Moon Giardino for pretty and easier.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>4. Lake meal</strong><span>Mistral for dinner, Da Giacomo al Lago for glamour, La Darsena for waterfront intimacy.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>5. Villa slots</strong><span>Balbianello only around ferry feasibility. Villa Monastero is the low-friction Varenna option.</span></div></div>
-      <div class="check"><span class="box"></span><div><strong>6. Boat moment</strong><span>Reserve a short private boat if budget allows. Highest memory-per-hour upgrade on Como.</span></div></div>
+      <div class="check"><span class="box"></span><div><strong>1. Hold Maison Borella</strong><span>One room was showing with breakfast, free cancellation before June 17, pay-nothing-until June 15. Request quiet/courtyard-facing.</span></div></div>
+      <div class="check"><span class="box"></span><div><strong>2. Choose lake hotel</strong><span>Al Veluu for romance; Hotel Bellagio for ferry ease; Grand Hotel Menaggio for smoothest logistics.</span></div></div>
+      <div class="check"><span class="box"></span><div><strong>3. If Al Veluu wins</strong><span>Ask about Suite Crocione, luggage arrival, taxi/private transfer, and dinner reservation on Sunday or Monday.</span></div></div>
+      <div class="check"><span class="box"></span><div><strong>4. Book flights</strong><span>Saturday morning London to Milan; Tuesday afternoon Milan to London. Avoid a return before 2:30pm.</span></div></div>
+      <div class="check"><span class="box"></span><div><strong>5. Reserve one lake moment</strong><span>Private boat for 1 hour or a clean ferry/villa plan. This is the memory anchor.</span></div></div>
+      <div class="check"><span class="box"></span><div><strong>6. Food</strong><span>Milan: Giacomo Arengario or Paper Moon. Lake: Al Veluu dinner, Da Giacomo al Lago, or La Darsena.</span></div></div>
     </div>
   </div>
 </section>
@@ -192,15 +284,16 @@ footer{padding:42px 0 60px;color:var(--muted);font-size:14px}
   <div class="shell">
     <div class="head">
       <h2>Planner Notes</h2>
-      <p class="note">Inbox access was not available when this page was drafted, so the Paris context is inferred from the existing private page and local memory cues. Re-check ferry times and restaurant hours close to travel.</p>
+      <p class="note">Availability changes fast. Re-check before booking, but the hotel comparison reflects live Booking.com checks made after the Paris reservation screenshots were reviewed.</p>
     </div>
     <div class="sources">
-      <p>Flight shape checked against London-Milan route data.</p>
-      <p>Milan to Como/Varenna train timings checked against Trenord route pages.</p>
-      <p>Ferry routing and central-lake transfer timing checked against Navigazione Laghi/Lake Como Travel references.</p>
-      <p>Michelin status and restaurant positioning checked against Michelin Guide listings.</p>
-      <p>Lake restaurant details checked through Grand Hotel Tremezzo and La Darsena official pages.</p>
-      <p>Villa Monastero opening/traffic context checked against the official Villa Monastero page.</p>
+      <p>Paris pattern came from reservation screenshots: Relais Montmartre, Le Bon Georges, Perruche, Pink Mamma, Gruppomimo, Brasserie des Pres.</p>
+      <p>Hotel availability checked on Booking.com for Maison Borella, Al Veluu, Bellagio, Menaggio, Tremezzo, Varenna, and Lenno.</p>
+      <p>Al Veluu Suite Crocione details checked on the official Al Veluu suites page.</p>
+      <p>Restaurant candidates checked through official restaurant pages where possible.</p>
+      <p>Prices are estimates converted from Booking.com CAD display to approximate EUR.</p>
+      <p>Lake Como image: Bellagio viewed from Tremezzo, Wikimedia Commons, CC BY-SA 3.0.</p>
+      <p>Final bookings should confirm cancellation policy, tax, room type, and arrival logistics.</p>
     </div>
   </div>
 </section>
