@@ -15,7 +15,7 @@
   --tobook:#e07a3a;--tobook-bg:rgba(224,122,58,.10);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+body{background:linear-gradient(180deg,#06100e 0%,#08130f 34%,#050b0a 100%);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;overflow-x:hidden}
 a{color:var(--cream);text-decoration:none;transition:opacity .2s}
 a:hover{opacity:.72}
 .shell{width:min(1160px,calc(100% - 40px));margin:auto}
@@ -26,30 +26,30 @@ a:hover{opacity:.72}
 .lock h1{font-family:Georgia,serif;font-size:clamp(54px,12vw,96px);font-weight:400;color:var(--cream);line-height:.92}
 .lock input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line2);color:var(--ink);padding:14px 0;text-align:center;font-size:20px;letter-spacing:.4em;outline:0;font-family:Georgia,serif}
 .lock input:focus{border-color:var(--gold)}
-nav{position:fixed;z-index:50;top:0;left:0;right:0;padding:20px 0;background:linear-gradient(var(--bg),transparent);backdrop-filter:blur(12px)}
+nav{position:fixed;z-index:50;top:0;left:0;right:0;padding:18px 0;background:linear-gradient(180deg,rgba(5,11,10,.94),rgba(5,11,10,.48));backdrop-filter:blur(14px);border-bottom:1px solid rgba(237,224,196,.08)}
 nav .shell{display:flex;justify-content:space-between;align-items:center}
 .brand{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--cream);font-weight:600}
 .links{display:flex;gap:22px}
 .links a{color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.2em;font-weight:500}
-.hero{min-height:100vh;position:relative;display:grid;align-items:end;padding:100px 0 0;overflow:hidden}
+.hero{min-height:94vh;position:relative;display:grid;align-items:end;padding:100px 0 0;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-image:url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center 30%;z-index:0}
-.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(170deg,rgba(6,16,14,.84) 0%,rgba(6,16,14,.55) 40%,rgba(6,16,14,.82) 100%)}
+.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(170deg,rgba(5,11,10,.92) 0%,rgba(6,16,14,.62) 42%,rgba(5,11,10,.92) 100%)}
 .hero-content{position:relative;z-index:1}
 .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
 .eyebrow span{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700}
 .eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
 h1{font-family:Georgia,serif;font-size:clamp(56px,10vw,122px);line-height:.88;font-weight:400;color:var(--cream);letter-spacing:-.02em;text-shadow:0 24px 80px rgba(0,0,0,.6)}
 h1 em,h2 em{font-style:italic;color:var(--lake2)}
-.hero-lede{max-width:640px;margin-top:26px;font-size:clamp(16px,1.6vw,20px);color:rgba(242,233,216,.74);line-height:1.65}
+.hero-lede{max-width:690px;margin-top:26px;font-size:clamp(16px,1.6vw,20px);color:rgba(242,233,216,.78);line-height:1.65}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;padding-bottom:48px}
 .btn{display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:4px;font-size:13px;font-weight:650;letter-spacing:.04em}
 .btn-primary{background:var(--cream);color:#14120d;border:1px solid var(--cream)}
 .btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(242,233,216,.28)}
-.hero-portrait{position:absolute;right:0;bottom:0;z-index:1;width:clamp(210px,22vw,340px)}
-.hero-portrait-inner{border:1px solid rgba(242,233,216,.14);background:rgba(13,24,18,.88);border-radius:8px 8px 0 0;overflow:hidden;backdrop-filter:blur(10px)}
+.hero-portrait{position:absolute;right:0;bottom:0;z-index:1;width:clamp(230px,22vw,350px)}
+.hero-portrait-inner{border:1px solid rgba(242,233,216,.16);background:rgba(13,24,18,.90);border-radius:8px 0 0 0;overflow:hidden;backdrop-filter:blur(10px);box-shadow:0 30px 90px rgba(0,0,0,.5)}
 .hero-portrait img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.82) contrast(1.05)}
 .hero-portrait-caption{padding:14px 16px;font-size:12px;color:var(--faint);line-height:1.5}
-.statstrip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(10,18,15,.96);position:relative;z-index:2}
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(237,224,196,.10);border-bottom:1px solid rgba(237,224,196,.10);background:rgba(10,18,15,.98);position:relative;z-index:2}
 .stat{padding:22px 20px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:0}
 .stat-label{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;font-weight:600}
@@ -69,8 +69,18 @@ section{padding:88px 0;border-bottom:1px solid var(--line)}
 .section-header{margin-bottom:42px}
 h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;font-weight:400;color:var(--cream);letter-spacing:-.02em}
 .section-note{margin-top:18px;max-width:640px;color:var(--muted);font-size:15px;line-height:1.7}
+.focus{padding:34px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(13,24,18,.78),rgba(6,16,14,.96))}
+.focus-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:14px}
+.focus-card{border:1px solid rgba(237,224,196,.12);border-radius:8px;background:linear-gradient(145deg,rgba(13,24,18,.92),rgba(7,14,12,.96));padding:22px;min-height:174px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.focus-card.is-primary{border-color:rgba(201,160,80,.36);background:linear-gradient(145deg,rgba(31,35,24,.96),rgba(10,18,15,.96))}
+.focus-kicker{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:750;margin-bottom:10px}
+.focus-title{font-family:Georgia,serif;font-size:28px;color:var(--cream);line-height:1.08;margin-bottom:10px}
+.focus-copy{color:var(--muted);font-size:13px;line-height:1.65}
+.focus-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.mini-pill{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--lake2);border:1px solid rgba(122,184,186,.25);padding:4px 8px;border-radius:999px;background:rgba(122,184,186,.05)}
 .timeline{display:grid;gap:1px;background:var(--line)}
-.day-row{display:grid;grid-template-columns:160px 1fr 210px;background:var(--bg);padding:28px 0;gap:28px;border-bottom:1px solid var(--line)}
+.day-row{display:grid;grid-template-columns:160px 1fr 210px;background:rgba(6,16,14,.78);padding:28px 0;gap:28px;border-bottom:1px solid var(--line)}
+.day-row:nth-child(even){background:rgba(10,18,15,.72)}
 .day-row:last-child{border-bottom:0}
 .day-dow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
 .day-num{font-family:Georgia,serif;font-size:32px;color:var(--cream);line-height:1}
@@ -83,7 +93,7 @@ h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;fo
 .grid{display:grid;gap:14px}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.anchor-card,.option-card,.food-card,.note-card{border:1px solid var(--line2);border-radius:8px;background:linear-gradient(145deg,var(--card),var(--card2));padding:24px;position:relative;overflow:hidden}
+.anchor-card,.option-card,.food-card,.note-card{border:1px solid var(--line2);border-radius:8px;background:linear-gradient(145deg,var(--card),var(--card2));padding:24px;position:relative;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,.22)}
 .anchor-card{border-color:rgba(74,158,110,.35);padding:34px;box-shadow:0 30px 90px rgba(0,0,0,.5),0 0 0 1px rgba(74,158,110,.12) inset}
 .anchor-card:before,.option-card.is-lead:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--booked),var(--gold))}
 .anchor-header{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;margin-bottom:24px}
@@ -108,7 +118,7 @@ h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;fo
 .option-body li{margin-bottom:5px}
 .option-link,.food-link{display:inline-block;font-size:12px;color:var(--gold2);margin-top:16px;border-bottom:1px solid rgba(201,160,80,.3);padding-bottom:2px}
 .status-label{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:750;margin:34px 0 14px}
-.lake-band{min-height:280px;border:1px solid var(--line2);border-radius:8px;background-image:linear-gradient(160deg,rgba(6,16,14,.82),rgba(6,16,14,.40),rgba(6,16,14,.78)),url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:30px;margin-bottom:18px}
+.lake-band{min-height:320px;border:1px solid var(--line2);border-radius:8px;background-image:linear-gradient(160deg,rgba(6,16,14,.86),rgba(6,16,14,.36),rgba(6,16,14,.82)),url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG");background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:34px;margin-bottom:18px;box-shadow:0 28px 90px rgba(0,0,0,.35)}
 .lake-band p{max-width:560px;color:var(--cream);font-size:18px;line-height:1.65;font-style:italic;font-family:Georgia,serif;text-shadow:0 4px 20px #000}
 .food-city{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);font-weight:750;margin-bottom:8px}
 .budget-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:start}
@@ -143,6 +153,10 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   .links{display:none}
   .statstrip{grid-template-columns:repeat(2,1fr)}
   .stat{border-bottom:1px solid var(--line)}
+  .focus{padding:22px 0}
+  .focus-grid{grid-template-columns:1fr}
+  .focus-card{min-height:auto;padding:20px}
+  .focus-title{font-size:24px}
   .day-row{grid-template-columns:118px 1fr;grid-template-rows:auto auto}
   .day-status{align-items:flex-start;grid-column:2}
   .anchor-body,.anchor-header,.two-col,.three-col,.budget-cols,.checklist{grid-template-columns:1fr}
@@ -169,6 +183,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   <div class="shell">
     <div class="brand">MK / YK</div>
     <div class="links">
+      <a href="#focus">Focus</a>
       <a href="#itinerary">Itinerary</a>
       <a href="#hotels">Hotels</a>
       <a href="#food">Food</a>
@@ -185,8 +200,8 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
     <h1>Milan first,<br><em>lake after.</em></h1>
     <p class="hero-lede">The core trip is now locked: Milan canal hotel, Duomo-view dinner at Giacomo Arengario, one lakefront Bellagio night with spa, and a canal-view final night back at Maison Borella. The last decisions are flights and whether the private vintage boat is the Lake Como splurge.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#hotels">See confirmed hotels</a>
-      <a class="btn btn-ghost" href="#book">What is still open</a>
+      <a class="btn btn-primary" href="#focus">See current decisions</a>
+      <a class="btn btn-ghost" href="#hotels">Confirmed hotels</a>
     </div>
   </div>
   <figure class="hero-portrait">
@@ -221,6 +236,37 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
 </div>
 
 <main>
+<section class="focus" id="focus">
+  <div class="shell">
+    <div class="focus-grid">
+      <div class="focus-card is-primary">
+        <div>
+          <div class="focus-kicker">Next booking</div>
+          <div class="focus-title">Flights should favor Linate.</div>
+          <p class="focus-copy">Best shape: London Heathrow to Milan Linate on Saturday morning, then Milan Linate to Heathrow Tuesday evening. Linate keeps the trip smooth and protects the Giacomo night.</p>
+        </div>
+        <div class="focus-meta"><span class="mini-pill">Target 10:20 outbound</span><span class="mini-pill">Target 19:50 return</span></div>
+      </div>
+      <div class="focus-card">
+        <div>
+          <div class="focus-kicker">Lake splurge</div>
+          <div class="focus-title">Vintage boat is the memory play.</div>
+          <p class="focus-copy">One private hour from Bellagio Center at 12:00 on Monday. It is not cheap, but it makes the one-night Como plan feel cinematic rather than just scenic.</p>
+        </div>
+        <div class="focus-meta"><span class="mini-pill">EUR 492.20</span><span class="mini-pill">Refundable</span></div>
+      </div>
+      <div class="focus-card">
+        <div>
+          <div class="focus-kicker">Dinner status</div>
+          <div class="focus-title">Saturday is locked.</div>
+          <p class="focus-copy">Giacomo Arengario is booked in the Duomo Loggia. Hotel Du Lac has been asked for La Punta or a terrace table; El Brellin has been asked for Monday in Navigli.</p>
+        </div>
+        <div class="focus-meta"><span class="mini-pill">Giacomo booked</span><span class="mini-pill">2 pending</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="itinerary">
   <div class="shell">
     <div class="section-header">
