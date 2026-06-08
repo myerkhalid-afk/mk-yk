@@ -45,10 +45,6 @@ h1 em,h2 em{font-style:italic;color:var(--lake2)}
 .btn{display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:4px;font-size:13px;font-weight:650;letter-spacing:.04em}
 .btn-primary{background:var(--cream);color:#14120d;border:1px solid var(--cream)}
 .btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(242,233,216,.28)}
-.hero-portrait{position:absolute;right:0;bottom:0;z-index:1;width:clamp(230px,22vw,350px)}
-.hero-portrait-inner{border:1px solid rgba(242,233,216,.16);background:rgba(13,24,18,.90);border-radius:8px 0 0 0;overflow:hidden;backdrop-filter:blur(10px);box-shadow:0 30px 90px rgba(0,0,0,.5)}
-.hero-portrait img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.82) contrast(1.05)}
-.hero-portrait-caption{padding:14px 16px;font-size:12px;color:var(--faint);line-height:1.5}
 .statstrip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(237,224,196,.10);border-bottom:1px solid rgba(237,224,196,.10);background:rgba(10,18,15,.98);position:relative;z-index:2}
 .stat{padding:22px 20px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:0}
@@ -161,7 +157,6 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   .day-status{align-items:flex-start;grid-column:2}
   .anchor-body,.anchor-header,.two-col,.three-col,.budget-cols,.checklist{grid-template-columns:1fr}
   .price{text-align:left;font-size:34px}.price-note{text-align:left}
-  .hero-portrait{display:none}
   .paris-strip{grid-template-columns:repeat(2,1fr)}
   .paris-item{border-bottom:1px solid var(--line)}
   .sources{columns:1}
@@ -204,12 +199,6 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
       <a class="btn btn-ghost" href="#hotels">Confirmed hotels</a>
     </div>
   </div>
-  <figure class="hero-portrait">
-    <div class="hero-portrait-inner">
-      <img src="photo2.jpg" alt="MK and YK">
-      <p class="hero-portrait-caption">Paris reference: boutique hotel, pretty rooms, good dinners, dessert, views. Same romance, lake edition.</p>
-    </div>
-  </figure>
 </header>
 
 <div class="statstrip">
