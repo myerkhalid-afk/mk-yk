@@ -74,6 +74,36 @@ h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;fo
 .focus-copy{color:var(--muted);font-size:13px;line-height:1.65}
 .focus-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
 .mini-pill{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--lake2);border:1px solid rgba(122,184,186,.25);padding:4px 8px;border-radius:999px;background:rgba(122,184,186,.05)}
+.reel-section{background:radial-gradient(circle at 20% 0%,rgba(201,160,80,.13),transparent 34%),linear-gradient(180deg,#07120f,#050908);padding-top:72px}
+.reel-wrap{display:grid;grid-template-columns:minmax(320px,420px) 1fr;gap:42px;align-items:center}
+.reel-phone{position:relative;border:1px solid rgba(237,224,196,.22);border-radius:28px;background:#030606;padding:10px;box-shadow:0 36px 120px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.04) inset}
+.reel-screen{position:relative;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#000;isolation:isolate}
+.reel-scene{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:reelScene 42s infinite;transform:scale(1.05)}
+.reel-scene:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.06) 44%,rgba(0,0,0,.82));z-index:0}
+.reel-scene.s1{animation-delay:0s;background-image:url("https://laketourbellagio.com/wp-content/uploads/sites/8124/2025/10/Private-Vintage-Wooden-Boat-Tour-on-Lake-Como-image-3.jpg?w=1200")}
+.reel-scene.s2{animation-delay:7s;background-image:url("https://laketourbellagio.com/wp-content/uploads/sites/8124/2025/10/R6__0427__27d583.jpg?resize=1200%2C675&zoom=2")}
+.reel-scene.s3{animation-delay:14s;background-image:url("https://upload.wikimedia.org/wikipedia/commons/9/95/Bellagio_Tremezzo.JPG")}
+.reel-scene.s4{animation-delay:21s;background-image:url("https://laketourbellagio.com/wp-content/uploads/sites/8124/2025/10/13A0100.jpg?resize=1200%2C675&zoom=2")}
+.reel-scene.s5{animation-delay:28s;background-image:url("https://laketourbellagio.com/wp-content/uploads/sites/8124/2025/10/R6__0820_95a39a.jpg?resize=1200%2C675&zoom=2")}
+.reel-scene.s6{animation-delay:35s;background-image:url("https://laketourbellagio.com/wp-content/uploads/sites/8124/2025/10/13A1182.jpg?resize=1200%2C675&zoom=2")}
+.reel-copy{position:absolute;left:20px;right:20px;bottom:24px;z-index:2;text-shadow:0 8px 30px rgba(0,0,0,.8)}
+.reel-kicker{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);font-weight:800;margin-bottom:6px}
+.reel-title{font-family:Georgia,serif;font-size:34px;line-height:.96;color:#fff7e8;margin-bottom:9px}
+.reel-text{font-size:13px;line-height:1.5;color:rgba(255,247,232,.82)}
+.reel-progress{position:absolute;left:18px;right:18px;top:16px;display:grid;grid-template-columns:repeat(6,1fr);gap:5px;z-index:3}
+.reel-progress span{height:2px;background:rgba(255,255,255,.28);border-radius:2px;overflow:hidden}
+.reel-progress span:after{content:"";display:block;height:100%;background:#fff;transform-origin:left;animation:progressPulse 42s infinite}
+.reel-progress span:nth-child(1):after{animation-delay:0s}.reel-progress span:nth-child(2):after{animation-delay:7s}.reel-progress span:nth-child(3):after{animation-delay:14s}.reel-progress span:nth-child(4):after{animation-delay:21s}.reel-progress span:nth-child(5):after{animation-delay:28s}.reel-progress span:nth-child(6):after{animation-delay:35s}
+.reel-panel{display:grid;gap:20px}
+.reel-panel h2{max-width:680px}
+.reel-panel .section-note{margin-top:0;max-width:720px}
+.reel-beats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:4px}
+.reel-beat{border:1px solid var(--line2);border-radius:8px;background:rgba(13,24,18,.76);padding:16px}
+.reel-beat strong{display:block;color:var(--cream);font-size:13px;margin-bottom:4px}
+.reel-beat span{display:block;color:var(--muted);font-size:12px;line-height:1.5}
+@keyframes reelScene{0%,13%{opacity:1;transform:scale(1.02)}16%,100%{opacity:0;transform:scale(1.12)}}
+@keyframes progressPulse{0%{transform:scaleX(0)}16%{transform:scaleX(1)}16.1%,100%{transform:scaleX(0)}}
+@media(prefers-reduced-motion:reduce){.reel-scene,.reel-progress span:after{animation:none}.reel-scene.s1{opacity:1;transform:none}}
 .timeline{display:grid;gap:1px;background:var(--line)}
 .day-row{display:grid;grid-template-columns:160px 1fr 210px;background:rgba(6,16,14,.78);padding:28px 0;gap:28px;border-bottom:1px solid var(--line)}
 .day-row:nth-child(even){background:rgba(10,18,15,.72)}
@@ -153,6 +183,9 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   .focus-grid{grid-template-columns:1fr}
   .focus-card{min-height:auto;padding:20px}
   .focus-title{font-size:24px}
+  .reel-wrap{grid-template-columns:1fr;gap:28px}
+  .reel-phone{max-width:380px;margin:auto}
+  .reel-beats{grid-template-columns:1fr}
   .day-row{grid-template-columns:118px 1fr;grid-template-rows:auto auto}
   .day-status{align-items:flex-start;grid-column:2}
   .anchor-body,.anchor-header,.two-col,.three-col,.budget-cols,.checklist{grid-template-columns:1fr}
@@ -179,6 +212,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
     <div class="brand">MK / YK</div>
     <div class="links">
       <a href="#focus">Focus</a>
+      <a href="#reel">Reel</a>
       <a href="#itinerary">Itinerary</a>
       <a href="#hotels">Hotels</a>
       <a href="#food">Food</a>
@@ -256,6 +290,35 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   </div>
 </section>
 
+<section class="reel-section" id="reel">
+  <div class="shell reel-wrap">
+    <div class="reel-phone" aria-label="Autoplaying cinematic trip reel">
+      <div class="reel-screen">
+        <div class="reel-progress"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="reel-scene s1"><div class="reel-copy"><div class="reel-kicker">Saturday / Milan</div><div class="reel-title">Land, dress up, Duomo at golden hour.</div><div class="reel-text">Linate by lunch, Maison Borella by the canal, rooftop marble, then Giacomo in the Loggia.</div></div></div>
+        <div class="reel-scene s2"><div class="reel-copy"><div class="reel-kicker">Sunday / Bellagio</div><div class="reel-title">Train north. Lake air. No rush.</div><div class="reel-text">One overnight bag, ferry across the water, Hotel Du Lac right on the lakefront.</div></div></div>
+        <div class="reel-scene s3"><div class="reel-copy"><div class="reel-kicker">Sunday night</div><div class="reel-title">Spa at six. La Punta at eight-thirty.</div><div class="reel-text">This is the quiet luxury night: water, views, dinner, and the walk back through Bellagio.</div></div></div>
+        <div class="reel-scene s4"><div class="reel-copy"><div class="reel-kicker">Monday / Como</div><div class="reel-title">The boat moment.</div><div class="reel-text">Private hour from Bellagio if you decide to keep the splurge. This is the photo-memory play.</div></div></div>
+        <div class="reel-scene s5"><div class="reel-copy"><div class="reel-kicker">Monday night / Navigli</div><div class="reel-title">Back to Milan, canal view, El Brellin.</div><div class="reel-text">A final dinner that feels relaxed, walkable, and very Milan.</div></div></div>
+        <div class="reel-scene s6"><div class="reel-copy"><div class="reel-kicker">Tuesday</div><div class="reel-title">Coffee, checkout, flight home.</div><div class="reel-text">Early enough to stay calm. Full enough to feel like a real European weekend.</div></div></div>
+      </div>
+    </div>
+    <div class="reel-panel">
+      <div>
+        <div class="eyebrow"><span>The moodboard</span></div>
+        <h2>A little film of<br><em>what this feels like</em></h2>
+      </div>
+      <p class="section-note">This is the trip in motion: Milan polish first, lake romance in the middle, then a softer Navigli finish. It is designed to show Yusma not just where you are going, but why each move exists.</p>
+      <div class="reel-beats">
+        <div class="reel-beat"><strong>Most cinematic moment</strong><span>Duomo rooftop into Giacomo on Saturday, then private boat if you keep the Como splurge.</span></div>
+        <div class="reel-beat"><strong>Most romantic night</strong><span>Hotel Du Lac spa at 18:00, La Punta at 20:30, lake walk after dinner.</span></div>
+        <div class="reel-beat"><strong>Best no-drink anchors</strong><span>Marchesi, Duomo views, Bellagio waterfront, El Brellin by the canal.</span></div>
+        <div class="reel-beat"><strong>Remaining decision</strong><span>Book the boat or keep Como simpler and save the EUR 260-492.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="itinerary">
   <div class="shell">
     <div class="section-header">
@@ -277,8 +340,8 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div><div class="day-dow">Saturday</div><div class="day-num">20</div><div class="day-month">June</div></div>
         <div class="day-content">
           <h3>London to Milan - Navigli night</h3>
-          <p>Fly easyJet from London Gatwick North Terminal to Milan Linate, landing 12:30. Check into Maison Borella after 14:00, then do Duomo, Galleria, Marchesi for coffee or dessert, and Giacomo Arengario at 19:45.</p>
-          <div class="tags"><span class="tag">EZY8289 booked</span><span class="tag">LGW 09:30 -> LIN 12:30</span><span class="tag">Maison Borella booked</span><span class="tag">Duomo</span><span class="tag">Giacomo booked</span></div>
+          <p>Fly easyJet from London Gatwick North Terminal to Milan Linate, landing 12:30. Check into Maison Borella after 14:00, then do Duomo rooftop at 17:00 if paid, Galleria/Marchesi, and Giacomo Arengario at 19:45.</p>
+          <div class="tags"><span class="tag">EZY8289 booked</span><span class="tag">LGW 09:30 -> LIN 12:30</span><span class="tag">Maison Borella booked</span><span class="tag">Duomo rooftop cart ready</span><span class="tag">Giacomo booked</span></div>
         </div>
         <div class="day-status"><span class="badge badge-booked">Flight booked</span><span class="badge badge-booked">Hotel booked</span><span class="badge badge-booked">Dinner booked</span></div>
       </div>
@@ -498,6 +561,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div class="budget-row"><div><div class="budget-label">easyJet flights</div><div class="budget-note">Booking KCSFPD5 / LGW-LIN-LGW / 1 large cabin bag on Yusma + small cabin bags for both</div></div><span class="badge badge-booked">Booked</span><div class="budget-amount">USD 619.75</div></div>
         <div class="budget-divider"><div class="budget-divider-label">Food, activities & transfers</div></div>
         <div class="budget-row"><div><div class="budget-label">Dinners</div><div class="budget-note">Giacomo, La Punta, and El Brellin booked; no wine</div></div><span class="badge badge-booked">Booked</span><div class="budget-amount">EUR 450-650</div></div>
+        <div class="budget-row"><div><div class="budget-label">Duomo rooftop</div><div class="budget-note">Terraces by lift, Sat Jun 20 at 17:00, 2 tickets in cart but not paid</div></div><span class="badge badge-tobook">Checkout</span><div class="budget-amount">EUR 36</div></div>
         <div class="budget-row"><div><div class="budget-label">Vintage boat option</div><div class="budget-note">Lake Tour Bellagio, 1 hour, refundable, Bellagio Center pickup</div></div><span class="badge badge-tobook">Decision</span><div class="budget-amount">EUR 492.20</div></div>
         <div class="budget-row"><div><div class="budget-label">Transfers, coffee, lunch, misc</div><div class="budget-note">Airport, Milan-Como, Marchesi, lunches, ferries/trains</div></div><div></div><div class="budget-amount">EUR 450-750</div></div>
         <div class="budget-row total"><div><div class="budget-label">Known booked total</div><div class="budget-note">Hotels plus flights, before meals, trains/ferries, taxis, city taxes, and boat decision</div></div><div></div><div class="budget-amount">EUR 901.75 + USD 619.75</div></div>
@@ -527,6 +591,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
       <div class="check-item"><div class="check-box done"></div><div><div class="check-title">easyJet flights</div><div class="check-desc">Booked: KCSFPD5. Sat Jun 20 EZY8289 LGW North 09:30 -> LIN 12:30. Tue Jun 23 EZY8290 LIN 13:20 -> LGW North 14:20. Total USD 619.75.</div></div></div>
       <div class="check-item"><div class="check-box done"></div><div><div class="check-title">La Punta - Sunday</div><div class="check-desc">Booked by Hotel Du Lac: Jun 21 at 20:30, after the 18:00 spa.</div></div></div>
       <div class="check-item"><div class="check-box done"></div><div><div class="check-title">El Brellin - Monday</div><div class="check-desc">Booked: Jun 22 at 20:30. Garden preference noted but not guaranteed.</div></div></div>
+      <div class="check-item"><div class="check-box urgent"></div><div><div class="check-title">Finish Duomo rooftop checkout</div><div class="check-desc">Cart prepared: Terraces by lift, Sat Jun 20 at 17:00, 2 tickets, EUR 36 total, non-refundable. Checkout requires purchaser details and payment.</div></div></div>
       <div class="check-item"><div class="check-box"></div><div><div class="check-title">Book private boat?</div><div class="check-desc">Lake Tour Bellagio vintage boat: Mon Jun 22, 12:00, 1 hour, Bellagio Center pickup, EUR 492.20 refundable total.</div></div></div>
       <div class="check-item"><div class="check-box"></div><div><div class="check-title">Buy Milan-Como train/ferry tickets</div><div class="check-desc">Plan Milano Centrale -> Varenna-Esino, ferry to Bellagio, then reverse Monday. Regional train seats are not assigned, so this can wait until closer to travel.</div></div></div>
       <div class="check-item"><div class="check-box urgent"></div><div><div class="check-title">Confirm luggage storage</div><div class="check-desc">Ask Maison Borella to store the large suitcase Sunday morning to Monday evening while you take one overnight bag to Lake Como.</div></div></div>
@@ -549,6 +614,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
       <p>easyJet confirmation from Gmail: booking KCSFPD5, total USD 619.75 paid by American Express Apple Pay. EZY8289 LGW North to LIN on Sat 20 Jun, 09:30-12:30. EZY8290 LIN to LGW North on Tue 23 Jun, 13:20-14:20. Both passengers have small cabin bags; Yusma also has 1 large cabin bag.</p>
       <p>Hotel Du Lac spa and dinner emails: spa is included and reserved for Sunday 21 Jun at 18:00. La Punta dinner is confirmed for Sunday 21 Jun at 20:30.</p>
       <p>El Brellin confirmation from Gmail: Monday 22 Jun at 20:30 for 2 people. Garden preference noted, but garden tables cannot be guaranteed in advance.</p>
+      <p>Duomo Milan official ticket checkout checked: Terraces by lift available Sat 20 Jun at 17:00, 2 full-price tickets added to cart, EUR 36 total, non-refundable. Checkout still requires purchaser details and payment.</p>
       <p>Private boat option checked: Lake Tour Bellagio private vintage wooden boat, Monday 22 Jun at 12:00, 1 hour, Bellagio Center pickup at Bar Sanremo dock 5 or 6, EUR 492.20 refundable total after fees, full refund with 24 hours notice or operator weather cancellation.</p>
       <p>Flight planning note: the Linate goal is achieved, but Tuesday is earlier than originally planned because the confirmed return departs at 13:20.</p>
       <p>Paris reference: Relais Montmartre, Le Bon Georges, Perruche, Pink Mamma, Gruppomimo, Brasserie des Pres. Same vibe, no drinks required.</p>
