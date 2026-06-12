@@ -46,7 +46,6 @@ h1 em,h2 em{font-style:italic;color:var(--lake2)}
 .btn-primary{background:var(--cream);color:#14120d;border:1px solid var(--cream)}
 .btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(242,233,216,.28)}
 .btn-video{background:linear-gradient(135deg,var(--gold2),var(--cream));color:#14120d;border:1px solid rgba(255,255,255,.32);box-shadow:0 14px 40px rgba(201,160,80,.22)}
-.btn-video:before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #14120d;margin-right:10px}
 .statstrip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(237,224,196,.10);border-bottom:1px solid rgba(237,224,196,.10);background:rgba(10,18,15,.98);position:relative;z-index:2}
 .stat{padding:22px 20px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:0}
@@ -83,9 +82,6 @@ h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;fo
 .reel-labels{position:absolute;left:16px;right:16px;top:16px;display:flex;justify-content:space-between;align-items:center;z-index:6;pointer-events:none}
 .reel-chip{background:rgba(7,18,15,.72);color:var(--cream);border:1px solid rgba(237,224,196,.2);border-radius:999px;padding:7px 10px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:850;backdrop-filter:blur(8px)}
 .reel-chip.gold{background:var(--gold2);color:#11100b;border-color:rgba(255,255,255,.18)}
-.reel-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:rgba(237,224,196,.88);box-shadow:0 22px 60px rgba(0,0,0,.45),0 0 0 12px rgba(237,224,196,.10)}
-.reel-play:before{content:"";width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:20px solid #11100b;margin-left:5px}
-.reel-play-note{position:absolute;left:0;right:0;top:calc(50% + 52px);z-index:4;text-align:center;color:#fff7e8;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;text-shadow:0 8px 24px #000}
 .reel-scene{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:reelScene 42s infinite;transform:scale(1.05)}
 .reel-scene:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.06) 44%,rgba(0,0,0,.82));z-index:0}
 .reel-scene.s1{animation-delay:0s;background-image:url("https://laketourbellagio.com/wp-content/uploads/sites/8124/2025/10/Private-Vintage-Wooden-Boat-Tour-on-Lake-Como-image-3.jpg?w=1200")}
@@ -105,16 +101,13 @@ h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;fo
 .reel-panel{display:grid;gap:20px}
 .reel-panel h2{max-width:680px}
 .reel-panel .section-note{margin-top:0;max-width:720px}
-.reel-beats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:4px}
+.reel-beats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
 .reel-beat{border:1px solid var(--line2);border-radius:8px;background:rgba(13,24,18,.76);padding:16px}
 .reel-beat strong{display:block;color:var(--cream);font-size:13px;margin-bottom:4px}
 .reel-beat span{display:block;color:var(--muted);font-size:12px;line-height:1.5}
 @keyframes reelScene{0%,13%{opacity:1;transform:scale(1.02)}16%,100%{opacity:0;transform:scale(1.12)}}
 @keyframes progressPulse{0%{transform:scaleX(0)}16%{transform:scaleX(1)}16.1%,100%{transform:scaleX(0)}}
 @media(prefers-reduced-motion:reduce){.reel-scene,.reel-progress span:after{animation:none}.reel-scene.s1{opacity:1;transform:none}}
-@media(prefers-reduced-motion:no-preference){.reel-play{animation:playFloat 2.8s ease-in-out infinite}.reel-play-note{animation:playFade 4.2s ease-in-out infinite}}
-@keyframes playFloat{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-54%) scale(1.04)}}
-@keyframes playFade{0%,100%{opacity:.82}50%{opacity:1}}
 .timeline{display:grid;gap:1px;background:var(--line)}
 .day-row{display:grid;grid-template-columns:160px 1fr 210px;background:rgba(6,16,14,.78);padding:28px 0;gap:28px;border-bottom:1px solid var(--line)}
 .day-row:nth-child(even){background:rgba(10,18,15,.72)}
@@ -176,13 +169,6 @@ h2{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.95;fo
 .check-box.urgent{border-color:var(--tobook)}
 .check-title{font-size:15px;color:var(--cream);font-weight:650;margin-bottom:5px}
 .check-desc{font-size:13px;color:var(--muted);line-height:1.6}
-.paris-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--card);margin-top:12px}
-.paris-item{padding:18px 16px;border-right:1px solid var(--line);text-align:center}
-.paris-item:last-child{border-right:0}
-.paris-place{font-size:12px;color:var(--cream);font-weight:650;margin-bottom:4px}
-.paris-role{font-size:10px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase}
-.sources{columns:2;column-gap:36px;color:var(--faint);font-size:13px;line-height:1.7}
-.sources p{break-inside:avoid;margin-bottom:10px}
 footer{padding:52px 0 72px;color:var(--faint);font-size:13px;border-top:1px solid var(--line)}
 footer .shell{display:flex;justify-content:space-between;align-items:center}
 @media(max-width:900px){
@@ -202,9 +188,6 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   .day-status{align-items:flex-start;grid-column:2}
   .anchor-body,.anchor-header,.two-col,.three-col,.budget-cols,.checklist{grid-template-columns:1fr}
   .price{text-align:left;font-size:34px}.price-note{text-align:left}
-  .paris-strip{grid-template-columns:repeat(2,1fr)}
-  .paris-item{border-bottom:1px solid var(--line)}
-  .sources{columns:1}
   footer .shell{flex-direction:column;gap:12px;text-align:center}
 }
 </style>
@@ -224,11 +207,9 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
     <div class="brand">MK / YK</div>
     <div class="links">
       <a href="#focus">Focus</a>
-      <a href="#reel">Reel</a>
+      <a href="#reel">Preview</a>
       <a href="#itinerary">Itinerary</a>
       <a href="#hotels">Hotels</a>
-      <a href="#food">Food</a>
-      <a href="#budget">Budget</a>
       <a href="#book">To Book</a>
     </div>
   </div>
@@ -239,10 +220,10 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   <div class="shell hero-content">
     <div class="eyebrow"><span>Milan / Bellagio / Milan - June 2026</span></div>
     <h1>Milan first,<br><em>lake after.</em></h1>
-    <p class="hero-lede">The core trip is now locked: easyJet flights into and out of Milan Linate, Milan canal hotel, Duomo-view dinner at Giacomo Arengario, one lakefront Bellagio night with spa and La Punta dinner, and a canal-view final night back at Maison Borella.</p>
+    <p class="hero-lede">Four days: Milan style, one romantic Bellagio night, then a soft Navigli finish. Flights, hotels, spa, and dinners are mostly locked.</p>
     <div class="hero-actions">
-      <a class="btn btn-video" href="#reel">Watch trip reel</a>
-      <a class="btn btn-primary" href="#focus">See current decisions</a>
+      <a class="btn btn-video" href="#reel">See visual preview</a>
+      <a class="btn btn-primary" href="#itinerary">See the plan</a>
       <a class="btn btn-ghost" href="#hotels">Confirmed hotels</a>
     </div>
   </div>
@@ -279,7 +260,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div>
           <div class="focus-kicker">Flights booked</div>
           <div class="focus-title">Linate is locked.</div>
-          <p class="focus-copy">easyJet is booked: Gatwick to Linate Saturday morning, then Linate to Gatwick Tuesday early afternoon. The return is earlier than ideal, so Tuesday becomes airport-focused.</p>
+          <p class="focus-copy">Gatwick to Linate Saturday morning. Linate to Gatwick Tuesday early afternoon.</p>
         </div>
         <div class="focus-meta"><span class="mini-pill">EZY8289</span><span class="mini-pill">EZY8290</span></div>
       </div>
@@ -287,7 +268,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div>
           <div class="focus-kicker">Lake splurge</div>
           <div class="focus-title">Vintage boat is the memory play.</div>
-          <p class="focus-copy">One private hour from Bellagio Center at 12:00 on Monday. It is not cheap, but it makes the one-night Como plan feel cinematic rather than just scenic.</p>
+          <p class="focus-copy">One private hour from Bellagio Center on Monday. The main optional splurge.</p>
         </div>
         <div class="focus-meta"><span class="mini-pill">EUR 492.20</span><span class="mini-pill">Refundable</span></div>
       </div>
@@ -295,7 +276,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div>
           <div class="focus-kicker">Dinner status</div>
           <div class="focus-title">Saturday is locked.</div>
-          <p class="focus-copy">Giacomo Arengario is booked in the Duomo Loggia. La Punta is confirmed after the spa in Bellagio. El Brellin is confirmed for the final Navigli dinner.</p>
+          <p class="focus-copy">Giacomo, La Punta, and El Brellin are confirmed.</p>
         </div>
         <div class="focus-meta"><span class="mini-pill">3 dinners booked</span><span class="mini-pill">No wine needed</span></div>
       </div>
@@ -307,10 +288,8 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   <div class="shell reel-wrap">
     <div class="reel-phone" aria-label="Autoplaying cinematic trip reel">
       <div class="reel-screen">
-        <div class="reel-labels"><span class="reel-chip">42 sec loop</span><span class="reel-chip gold">Trip reel</span></div>
+        <div class="reel-labels"><span class="reel-chip">42 sec loop</span><span class="reel-chip gold">Visual preview</span></div>
         <div class="reel-progress"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="reel-play" aria-hidden="true"></div>
-        <div class="reel-play-note">Tap into the vibe</div>
         <div class="reel-scene s1"><div class="reel-copy"><div class="reel-kicker">Saturday / Milan</div><div class="reel-title">Land, dress up, Duomo at golden hour.</div><div class="reel-text">Linate by lunch, Maison Borella by the canal, rooftop marble, then Giacomo in the Loggia.</div></div></div>
         <div class="reel-scene s2"><div class="reel-copy"><div class="reel-kicker">Sunday / Bellagio</div><div class="reel-title">Train north. Lake air. No rush.</div><div class="reel-text">One overnight bag, ferry across the water, Hotel Du Lac right on the lakefront.</div></div></div>
         <div class="reel-scene s3"><div class="reel-copy"><div class="reel-kicker">Sunday night</div><div class="reel-title">Spa at six. La Punta at eight-thirty.</div><div class="reel-text">This is the quiet luxury night: water, views, dinner, and the walk back through Bellagio.</div></div></div>
@@ -321,15 +300,14 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
     </div>
     <div class="reel-panel">
       <div>
-        <div class="eyebrow"><span>The moodboard</span></div>
-        <h2>A little film of<br><em>what this feels like</em></h2>
+        <div class="eyebrow"><span>Visual preview</span></div>
+        <h2>Milan first,<br><em>lake after</em></h2>
       </div>
-      <p class="section-note">This is the trip in motion: Milan polish first, lake romance in the middle, then a softer Navigli finish. It is designed to show Yusma not just where you are going, but why each move exists.</p>
+      <p class="section-note">Not a video file. This is a cinematic image loop showing the feel of the trip: Milan polish, Bellagio romance, and one relaxed final night by the canal.</p>
       <div class="reel-beats">
-        <div class="reel-beat"><strong>Most cinematic moment</strong><span>Duomo rooftop into Giacomo on Saturday, then private boat if you keep the Como splurge.</span></div>
-        <div class="reel-beat"><strong>Most romantic night</strong><span>Hotel Du Lac spa at 18:00, La Punta at 20:30, lake walk after dinner.</span></div>
-        <div class="reel-beat"><strong>Best no-drink anchors</strong><span>Marchesi, Duomo views, Bellagio waterfront, El Brellin by the canal.</span></div>
-        <div class="reel-beat"><strong>Remaining decision</strong><span>Book the boat or keep Como simpler and save the EUR 260-492.</span></div>
+        <div class="reel-beat"><strong>Big moment</strong><span>Duomo rooftop into Giacomo.</span></div>
+        <div class="reel-beat"><strong>Lake night</strong><span>Spa, La Punta, waterfront walk.</span></div>
+        <div class="reel-beat"><strong>Open call</strong><span>Boat splurge or keep Como simpler.</span></div>
       </div>
     </div>
   </div>
@@ -356,7 +334,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div><div class="day-dow">Saturday</div><div class="day-num">20</div><div class="day-month">June</div></div>
         <div class="day-content">
           <h3>London to Milan - Navigli night</h3>
-          <p>Fly easyJet from London Gatwick North Terminal to Milan Linate, landing 12:30. Check into Maison Borella after 14:00, then do Duomo rooftop at 17:00 if paid, Galleria/Marchesi, and Giacomo Arengario at 19:45.</p>
+          <p>Morning flight into Linate. Canal hotel, Duomo rooftop if paid, then Giacomo Arengario at 19:45.</p>
           <div class="tags"><span class="tag">EZY8289 booked</span><span class="tag">LGW 09:30 -> LIN 12:30</span><span class="tag">Maison Borella booked</span><span class="tag">Duomo rooftop cart ready</span><span class="tag">Giacomo booked</span></div>
         </div>
         <div class="day-status"><span class="badge badge-booked">Flight booked</span><span class="badge badge-booked">Hotel booked</span><span class="badge badge-booked">Dinner booked</span></div>
@@ -365,7 +343,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div><div class="day-dow">Sunday</div><div class="day-num">21</div><div class="day-month">June</div></div>
         <div class="day-content">
           <h3>Milan to Bellagio - the lake night</h3>
-          <p>Leave the big suitcase with Maison Borella if they agree. Take one overnight bag to Bellagio. Check into Hotel Du Lac from 14:00, spa is confirmed for 18:00, then La Punta is confirmed for 20:30.</p>
+          <p>Light overnight bag to Bellagio. Hotel Du Lac, spa at 18:00, La Punta at 20:30.</p>
           <div class="tags"><span class="tag">Hotel Du Lac booked</span><span class="tag">Bellagio</span><span class="tag">18:00 SPA booked</span><span class="tag">La Punta 20:30 booked</span></div>
         </div>
         <div class="day-status"><span class="badge badge-booked">Hotel booked</span><span class="badge badge-booked">SPA booked</span><span class="badge badge-booked">Dinner booked</span></div>
@@ -374,7 +352,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div><div class="day-dow">Monday</div><div class="day-num">22</div><div class="day-month">June</div></div>
         <div class="day-content">
           <h3>Bellagio morning to Milan</h3>
-          <p>Breakfast 7:30-10:30. Do Villa Melzi by foot, then the clean splurge is a 12:00 private vintage boat from Bellagio Center. Return to Milan mid-afternoon, check back into Maison Borella, then El Brellin at 20:30.</p>
+          <p>Slow lake morning, Villa Melzi, optional private boat at noon, then back to Milan for El Brellin.</p>
           <div class="tags"><span class="tag">Villa Melzi</span><span class="tag">Vintage boat option</span><span class="tag">Return Milan</span><span class="tag">Maison Borella booked</span><span class="tag">El Brellin booked</span></div>
         </div>
         <div class="day-status"><span class="badge badge-booked">Hotel booked</span><span class="badge badge-booked">Dinner booked</span><span class="badge badge-tobook">Boat decision</span></div>
@@ -383,7 +361,7 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
         <div><div class="day-dow">Tuesday</div><div class="day-num">23</div><div class="day-month">June</div></div>
         <div class="day-content">
           <h3>Milan to London - easy out</h3>
-          <p>Earlier exit than planned: easyJet departs Milan Linate at 13:20 and arrives London Gatwick at 14:20. Keep the morning light: breakfast, checkout, airport transfer, no ambitious sightseeing.</p>
+          <p>Breakfast, checkout, Linate. No ambitious sightseeing before the 13:20 flight.</p>
           <div class="tags"><span class="tag">EZY8290 booked</span><span class="tag">LIN 13:20 -> LGW 14:20</span><span class="tag">Airport morning</span></div>
         </div>
         <div class="day-status"><span class="badge badge-booked">Flight booked</span></div>
@@ -538,23 +516,10 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
     </div>
     <div class="lake-band"><p>"For Bellagio, do not overcomplicate dinner. The point is being on the lake, not winning a restaurant spreadsheet."</p></div>
     <div class="three-col">
-      <div class="food-card"><span class="badge badge-booked">Booked</span><div class="food-city">Milan / dinner</div><div class="food-name">Giacomo Arengario</div><p class="food-desc">Saturday 20 June at 19:45, Loggia - Duomo Area. This is the Milan showpiece: glass-enclosed dining room with Duomo view, elegant and memorable without needing drinks.</p><a class="food-link" href="https://www.sevenrooms.com/explore/dagiacomoarengario/reservations/create/search/" target="_blank" rel="noreferrer">Reservation page -></a></div>
-      <div class="food-card"><div class="food-city">Milan / dinner backup</div><div class="food-name">Paper Moon Giardino</div><p class="food-desc">Pretty, fashionable, relaxed. Keep as a backup idea, not the main plan now that Giacomo is booked.</p><a class="food-link" href="https://www.papermoonrestaurants.com/paper-moon-giardino.html?lang=en" target="_blank" rel="noreferrer">Official site -></a></div>
-      <div class="food-card"><div class="food-city">Milan / dessert</div><div class="food-name">Marchesi 1824</div><p class="food-desc">The no-drink anchor: coffee, pastry, dessert, and Galleria atmosphere.</p><a class="food-link" href="https://www.pasticceriamarchesi.com/" target="_blank" rel="noreferrer">Official site -></a></div>
-      <div class="food-card"><span class="badge badge-booked">Booked</span><div class="food-city">Bellagio / dinner</div><div class="food-name">La Punta</div><p class="food-desc">Confirmed by Hotel Du Lac for Sunday 21 June at 20:30, after the 18:00 spa. This is the right Lake Como dinner: simple, lake-facing, and low-friction.</p></div>
-      <div class="food-card"><span class="badge badge-booked">Booked</span><div class="food-city">Milan / final dinner</div><div class="food-name">El Brellin</div><p class="food-desc">Confirmed for Monday 22 June at 20:30. Garden tables cannot be reserved, but the restaurant noted the garden preference and will seat you there if available.</p><a class="food-link" href="https://brellin.com/en/" target="_blank" rel="noreferrer">Official site -></a></div>
-      <div class="food-card"><span class="badge badge-alt">Backup only</span><div class="food-city">Lake / backup</div><div class="food-name">Bilacus</div><p class="food-desc">No longer needed now that La Punta is confirmed. Keep it only as an emergency Bellagio backup.</p><a class="food-link" href="https://www.bilacusbellagio.it/en/" target="_blank" rel="noreferrer">Official site -></a></div>
-    </div>
-    <div style="margin-top:36px">
-      <p class="status-label" style="margin:0 0 12px;color:var(--faint)">Paris reference / vibe to match</p>
-      <div class="paris-strip">
-        <div class="paris-item"><div class="paris-place">Relais Montmartre</div><div class="paris-role">Hotel</div></div>
-        <div class="paris-item"><div class="paris-place">Le Bon Georges</div><div class="paris-role">Dinner</div></div>
-        <div class="paris-item"><div class="paris-place">Perruche</div><div class="paris-role">Rooftop</div></div>
-        <div class="paris-item"><div class="paris-place">Pink Mamma</div><div class="paris-role">Dinner</div></div>
-        <div class="paris-item"><div class="paris-place">Gruppomimo</div><div class="paris-role">Dinner</div></div>
-        <div class="paris-item"><div class="paris-place">Brasserie des Pres</div><div class="paris-role">Dinner</div></div>
-      </div>
+      <div class="food-card"><span class="badge badge-booked">Booked</span><div class="food-city">Milan / dinner</div><div class="food-name">Giacomo Arengario</div><p class="food-desc">Sat 20 Jun, 19:45. Duomo-view showpiece dinner.</p><a class="food-link" href="https://www.sevenrooms.com/explore/dagiacomoarengario/reservations/create/search/" target="_blank" rel="noreferrer">Reservation page -></a></div>
+      <div class="food-card"><div class="food-city">Milan / dessert</div><div class="food-name">Marchesi 1824</div><p class="food-desc">Coffee, pastry, and Galleria atmosphere.</p><a class="food-link" href="https://www.pasticceriamarchesi.com/" target="_blank" rel="noreferrer">Official site -></a></div>
+      <div class="food-card"><span class="badge badge-booked">Booked</span><div class="food-city">Bellagio / dinner</div><div class="food-name">La Punta</div><p class="food-desc">Sun 21 Jun, 20:30. Lake-facing dinner after spa.</p></div>
+      <div class="food-card"><span class="badge badge-booked">Booked</span><div class="food-city">Milan / final dinner</div><div class="food-name">El Brellin</div><p class="food-desc">Mon 22 Jun, 20:30. Garden preference noted.</p><a class="food-link" href="https://brellin.com/en/" target="_blank" rel="noreferrer">Official site -></a></div>
     </div>
   </div>
 </section>
@@ -615,29 +580,6 @@ footer .shell{display:flex;justify-content:space-between;align-items:center}
   </div>
 </section>
 
-<section>
-  <div class="shell">
-    <div class="section-header">
-      <div class="eyebrow"><span>Planning notes</span></div>
-      <h2>How this<br><em>was built</em></h2>
-    </div>
-    <div class="sources">
-      <p>Maison Borella confirmation from Gmail: GP00QX60KI, Maison Privee Senior, Jun 20-21, EUR 305 total, free cancellation/pay later, free buffet breakfast, EUR 20 city tax on site.</p>
-      <p>Hotel Du Lac confirmation from Gmail: 2026053148907555, Superior room for 2 adults, Jun 21-22, EUR 351.75 room total, EUR 3 per person city tax, breakfast and complimentary SPA access included.</p>
-      <p>Maison Borella Monday confirmation from Gmail: GP31HF91KF, Canal View Superior, Jun 22-23, EUR 245 total, free cancellation/pay later, free buffet breakfast, city tax not included.</p>
-      <p>Maison Borella Jun 22 options considered before booking: Maison Privee Junior EUR 230, Court Superior EUR 245, Canal View Superior EUR 245, Maison Privee Senior EUR 290. Canal View Superior was selected.</p>
-      <p>Giacomo Arengario booked by Myer: Sat 20 Jun, 19:45, 2 guests, Loggia - Duomo Area. The booking system described it as a glass-enclosed lodge with view on the Duomo Cathedral. Late cancellation/no-show policy is EUR 50 per person if inside 3 hours.</p>
-      <p>easyJet confirmation from Gmail: booking KCSFPD5, total USD 619.75 paid by American Express Apple Pay. EZY8289 LGW North to LIN on Sat 20 Jun, 09:30-12:30. EZY8290 LIN to LGW North on Tue 23 Jun, 13:20-14:20. Both passengers have small cabin bags; Yusma also has 1 large cabin bag.</p>
-      <p>Hotel Du Lac spa and dinner emails: spa is included and reserved for Sunday 21 Jun at 18:00. La Punta dinner is confirmed for Sunday 21 Jun at 20:30.</p>
-      <p>El Brellin confirmation from Gmail: Monday 22 Jun at 20:30 for 2 people. Garden preference noted, but garden tables cannot be guaranteed in advance.</p>
-      <p>Duomo Milan official ticket checkout checked: Terraces by lift available Sat 20 Jun at 17:00, 2 full-price tickets added to cart, EUR 36 total, non-refundable. Checkout still requires purchaser details and payment.</p>
-      <p>Private boat option checked: Lake Tour Bellagio private vintage wooden boat, Monday 22 Jun at 12:00, 1 hour, Bellagio Center pickup at Bar Sanremo dock 5 or 6, EUR 492.20 refundable total after fees, full refund with 24 hours notice or operator weather cancellation.</p>
-      <p>Flight planning note: the Linate goal is achieved, but Tuesday is earlier than originally planned because the confirmed return departs at 13:20.</p>
-      <p>Paris reference: Relais Montmartre, Le Bon Georges, Perruche, Pink Mamma, Gruppomimo, Brasserie des Pres. Same vibe, no drinks required.</p>
-      <p>Lake Como hero image: Bellagio viewed from Tremezzo, Wikimedia Commons, CC BY-SA 3.0.</p>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer>
