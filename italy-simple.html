@@ -103,14 +103,14 @@ h2{font-size:clamp(36px,6vw,66px);line-height:.96}
 .progress-wrap{margin-top:14px}
 .progress-meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;margin-bottom:8px}
 .progress-bar{height:13px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
-.progress-fill{height:100%;width:76%;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--gold))}
+.progress-fill{height:100%;width:77%;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--gold))}
 .category-card{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.035);padding:15px}
 .category-card h3{font-size:15px;margin-bottom:4px}
 .category-card .money{font-family:Georgia,serif;font-size:27px;color:var(--ink);line-height:1.1}
 .category-card p{color:var(--muted);font-size:12px;margin-top:8px}
 .actual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
 .visual-grid{display:grid;grid-template-columns:260px 1fr;gap:18px;align-items:center;margin-bottom:18px}
-.donut{width:240px;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--gold) 0 48.7%, var(--lake) 48.7% 76.8%, var(--green) 76.8% 93.9%, #dca36d 93.9% 98.2%, #a7b083 98.2% 99.8%, #f4dca4 99.8% 100%);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line)}
+.donut{width:240px;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--gold) 0 41%, var(--lake) 41% 64.6%, var(--green) 64.6% 79%, #d88ea0 79% 88.3%, #a58ad9 88.3% 94.3%, #dca36d 94.3% 98.3%, #a7b083 98.3% 99.6%, #f4dca4 99.6% 100%);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line)}
 .donut-hole{width:132px;aspect-ratio:1;border-radius:50%;background:#07100d;border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:18px}
 .donut-hole b{font-family:Georgia,serif;font-size:30px;font-weight:400;line-height:1;color:var(--ink)}
 .donut-hole span{display:block;color:var(--muted);font-size:11px;margin-top:6px}
@@ -120,9 +120,10 @@ h2{font-size:clamp(36px,6vw,66px);line-height:.96}
 .swatch.flight{background:var(--lake)}
 .swatch.food{background:var(--green)}
 .swatch.transport{background:#dca36d}
-.swatch.sight{background:#dca36d}
 .swatch.sight{background:#a7b083}
 .swatch.gelato{background:#f4dca4}
+.swatch.gift{background:#d88ea0}
+.swatch.shopping{background:#a58ad9}
 .legend-row strong{color:var(--ink);font-size:13px}
 .flight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .flight-card{border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,#0e1913,#08110e);padding:20px;display:grid;gap:14px}
@@ -322,17 +323,17 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
     </div>
     <div class="spend-top">
       <div class="metric"><b>Working ceiling</b><span>EUR 2.5k</span><small>Realistic plan, no private boat</small></div>
-      <div class="metric"><b>Known actuals</b><span>EUR 1,904</span><small>C$3,084 / US$2,209 equivalent</small></div>
-      <div class="metric"><b>Budget used</b><span>76%</span><small>El Brellin and final airport costs still open</small></div>
+      <div class="metric"><b>All-in actuals</b><span>EUR 2,262</span><small>C$3,664 / US$2,624 equivalent</small></div>
+      <div class="metric"><b>Core trip</b><span>EUR 1,917</span><small>77% of EUR 2.5k ceiling</small></div>
     </div>
     <div class="spend-grid">
       <div class="spend-panel">
         <div class="report-total">
-          <b>Known actual trip spend</b>
-          <strong>EUR 1,904</strong>
-          <p>C$3,084 / US$2,209 equivalent. Includes flights, all three hotel nights, city taxes we know, Yusma-paid dinners, transport, snacks, and Varenna sightseeing.</p>
+          <b>All-in captured spend</b>
+          <strong>EUR 2,262</strong>
+          <p>C$3,664 / US$2,624 equivalent. Core trip is EUR 1,917; the extra EUR 345 is Tom jewellery for Yusma and Jimmy Fairly sunglasses for Myer.</p>
           <div class="progress-wrap">
-            <div class="progress-meta"><span>Spend vs EUR 2,500 working ceiling</span><strong>76% used</strong></div>
+            <div class="progress-meta"><span>Core trip vs EUR 2,500 working ceiling</span><strong>77% used</strong></div>
             <div class="progress-bar"><div class="progress-fill"></div></div>
           </div>
         </div>
@@ -341,39 +342,51 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
           <h2>What drove it</h2>
         </div>
         <div class="visual-grid">
-          <div class="donut"><div class="donut-hole"><b>EUR 1,904</b><span>known actuals</span></div></div>
+          <div class="donut"><div class="donut-hole"><b>EUR 2,262</b><span>all-in actuals</span></div></div>
           <div class="legend">
-            <div class="legend-row"><span class="swatch"></span><span>Hotels</span><strong>48.7%</strong></div>
-            <div class="legend-row"><span class="swatch flight"></span><span>Flights</span><strong>28.1%</strong></div>
-            <div class="legend-row"><span class="swatch food"></span><span>Restaurants + cafes</span><strong>17.1%</strong></div>
-            <div class="legend-row"><span class="swatch transport"></span><span>Transport</span><strong>4.3%</strong></div>
-            <div class="legend-row"><span class="swatch sight"></span><span>Sightseeing</span><strong>1.6%</strong></div>
-            <div class="legend-row"><span class="swatch gelato"></span><span>Gelato</span><strong>0.3%</strong></div>
+            <div class="legend-row"><span class="swatch"></span><span>Hotels</span><strong>41.0%</strong></div>
+            <div class="legend-row"><span class="swatch flight"></span><span>Flights</span><strong>23.6%</strong></div>
+            <div class="legend-row"><span class="swatch food"></span><span>Restaurants + cafes</span><strong>14.4%</strong></div>
+            <div class="legend-row"><span class="swatch gift"></span><span>Jewellery gift</span><strong>9.3%</strong></div>
+            <div class="legend-row"><span class="swatch shopping"></span><span>Sunglasses</span><strong>6.0%</strong></div>
+            <div class="legend-row"><span class="swatch transport"></span><span>Transport/local</span><strong>4.0%</strong></div>
+            <div class="legend-row"><span class="swatch sight"></span><span>Sightseeing</span><strong>1.3%</strong></div>
+            <div class="legend-row"><span class="swatch gelato"></span><span>Gelato</span><strong>0.4%</strong></div>
           </div>
         </div>
         <div class="actual-grid">
           <div class="category-card"><h3>Hotels</h3><div class="money">EUR 928</div><span class="money-small">C$1,503 / US$1,076</span><p>The trip is hotel-led: two Maison Borella nights plus Hotel Du Lac in Bellagio.</p></div>
           <div class="category-card"><h3>Flights</h3><div class="money">EUR 534</div><span class="money-small">C$865 / US$620</span><p>easyJet LGW-LIN-LGW, booking KCSFPD5, with the cabin-bag setup included.</p></div>
           <div class="category-card"><h3>Restaurants + cafes</h3><div class="money">EUR 325</div><span class="money-small">C$527 / US$377</span><p>Giacomo + La Punta are the anchors; cafes and casual food stay modest.</p></div>
-          <div class="category-card"><h3>Transport</h3><div class="money">EUR 82</div><span class="money-small">C$133 / US$96</span><p>Taxi, train, ferry, and London transit.</p></div>
+          <div class="category-card"><h3>Jewellery gift</h3><div class="money">EUR 210</div><span class="money-small">C$339 / US$243</span><p>Tom jewellery for Yusma. Declined Tom attempts are excluded.</p></div>
+          <div class="category-card"><h3>Sunglasses</h3><div class="money">EUR 135</div><span class="money-small">C$219 / US$157</span><p>Jimmy Fairly sunglasses for Myer.</p></div>
+          <div class="category-card"><h3>Transport / local</h3><div class="money">EUR 90</div><span class="money-small">C$146 / US$104</span><p>Taxi, train, ferry, London transit, ATM Milano, and small local Milan charge.</p></div>
           <div class="category-card"><h3>Sightseeing</h3><div class="money">EUR 30</div><span class="money-small">C$49 / US$35</span><p>Villa Monastero / Varenna ticketing.</p></div>
-          <div class="category-card"><h3>Gelato</h3><div class="money">EUR 5</div><span class="money-small">C$8 / US$6</span><p>Artico was a tiny cost, but exactly the kind of small spend that makes the trip feel alive.</p></div>
+          <div class="category-card"><h3>Gelato</h3><div class="money">EUR 10</div><span class="money-small">C$15 / US$11</span><p>Artico + Gelateria Lab. Tiny cost, high joy per euro.</p></div>
         </div>
         <div class="bars">
           <div class="bar-row">
-            <div class="bar-label"><span>Hotels</span><strong>49%</strong></div>
-            <div class="bar-track"><div class="bar-fill" style="width:49%"></div></div>
+            <div class="bar-label"><span>Hotels</span><strong>41%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:41%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-label"><span>Flights</span><strong>28%</strong></div>
-            <div class="bar-track"><div class="bar-fill" style="width:28%"></div></div>
+            <div class="bar-label"><span>Flights</span><strong>24%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:24%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-label"><span>Restaurants + cafes</span><strong>17%</strong></div>
-            <div class="bar-track"><div class="bar-fill" style="width:17%"></div></div>
+            <div class="bar-label"><span>Restaurants + cafes</span><strong>14%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:14%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-label"><span>Transport</span><strong>4%</strong></div>
+            <div class="bar-label"><span>Jewellery gift</span><strong>9%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:9%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Sunglasses</span><strong>6%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:6%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Transport / local</span><strong>4%</strong></div>
             <div class="bar-track"><div class="bar-fill" style="width:4%"></div></div>
           </div>
           <div class="bar-row">
@@ -392,10 +405,10 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
           <h2>Insights</h2>
         </div>
         <div class="ledger">
-          <div class="line-item"><div><b>Flights + hotels are the fixed base</b><span>Flights and hotels together are about EUR 1,462, or 77% of known spend. That is the real structure of the trip.</span></div><div class="amount">77%</div></div>
-          <div class="line-item"><div><b>The trip is not snack-heavy</b><span>Small cafes, station bites, and gelato are tiny relative to the whole trip. The budget is being shaped by travel, hotels, and dinners.</span></div><div class="amount">2%</div></div>
-          <div class="line-item"><div><b>The ceiling is now realistic</b><span>EUR 2.5k is the cleaner working ceiling because the plan is flights, hotels, meals, lake movement, and Milan.</span></div><div class="amount">76%</div></div>
-          <div class="line-item"><div><b>Food is premium but disciplined</b><span>Two strong dinners, no alcohol, and casual food kept the category meaningful without being runaway.</span></div><div class="amount">17%</div></div>
+          <div class="line-item"><div><b>Core trip remains controlled</b><span>Excluding gift/personal shopping, core trip spend is about EUR 1,917, or 77% of the EUR 2.5k working ceiling.</span></div><div class="amount">77%</div></div>
+          <div class="line-item"><div><b>Shopping is now visible</b><span>Tom jewellery and Jimmy Fairly sunglasses add about EUR 345 all-in, but they are separated from hotels, flights, and food.</span></div><div class="amount">EUR 345</div></div>
+          <div class="line-item"><div><b>The trip is not snack-heavy</b><span>Small cafes, station bites, and gelato remain tiny. They are not what moves the total.</span></div><div class="amount">&lt;2%</div></div>
+          <div class="line-item"><div><b>Flights + hotels are the fixed base</b><span>Flights and hotels together are about EUR 1,462, or 65% of all-in captured spend.</span></div><div class="amount">65%</div></div>
         </div>
       </div>
     </div>
@@ -424,11 +437,16 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
           <div class="tx"><div class="tag-mini">Cafe</div><div><b>Bar/caffetteria Villa Monastero</b><span>Garden cafe stop</span></div><div class="amount">EUR 7<small>C$11 / US$8</small></div></div>
         </div>
         <div class="day-ledger">
-          <div class="day-ledger-head"><div><b>Monday Jun 22 - Return to Milan</b><span>Varenna train, final Navigli night</span></div><div class="day-total">EUR 284+<small>C$460+ / US$329+</small></div></div>
+          <div class="day-ledger-head"><div><b>Monday Jun 22 - Return to Milan</b><span>Varenna train, Milan shopping, final Navigli night</span></div><div class="day-total">EUR 642+<small>C$1,040+ / US$745+</small></div></div>
           <div class="tx"><div class="tag-mini">Hotel</div><div><b>Maison Borella - Canal View Superior</b><span>Final Milan night, booked room rate</span></div><div class="amount">EUR 245<small>C$397 / US$284</small></div></div>
           <div class="tx"><div class="tag-mini">Train</div><div><b>Trenord</b><span>Varenna-Esino to Milano Centrale card charge</span></div><div class="amount">EUR 15<small>C$24 / US$17</small></div></div>
           <div class="tx"><div class="tag-mini">Snack</div><div><b>Il Binario stazione</b><span>Station cafe stop</span></div><div class="amount">EUR 17<small>C$28 / US$20</small></div></div>
           <div class="tx"><div class="tag-mini">Snack</div><div><b>Locanda Cavallino</b><span>Varenna light food / cafe</span></div><div class="amount">EUR 7<small>C$11 / US$8</small></div></div>
+          <div class="tx"><div class="tag-mini">Gift</div><div><b>Tom jewellery</b><span>Gift for Yusma. Includes C$300.55 posted on Amex plus EUR 24 posted on Visa; declined EUR 185 attempts excluded.</span></div><div class="amount">EUR 210<small>C$339 / US$243</small></div></div>
+          <div class="tx"><div class="tag-mini">Shop</div><div><b>Jimmy Fairly</b><span>Sunglasses for Myer</span></div><div class="amount">EUR 135<small>C$219 / US$157</small></div></div>
+          <div class="tx"><div class="tag-mini">Gelato</div><div><b>Gelateria Lab</b><span>Milan gelato</span></div><div class="amount">EUR 5<small>C$7 / US$5</small></div></div>
+          <div class="tx"><div class="tag-mini">Local</div><div><b>Piazzale Egeo S.r.l.</b><span>Small Milan local charge, merchant unclear</span></div><div class="amount">EUR 7<small>C$12 / US$9</small></div></div>
+          <div class="tx"><div class="tag-mini">Transit</div><div><b>ATM Milano</b><span>Local transit card charge</span></div><div class="amount">EUR 1<small>C$2 / US$1</small></div></div>
           <div class="tx"><div class="tag-mini">Dinner</div><div><b>El Brellin</b><span>Booked for final dinner; add receipt after payment</span></div><div class="amount">Pending</div></div>
         </div>
         <div class="day-ledger">
@@ -503,7 +521,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
     {keys:['flight','flights','easyjet','gatwick','linate'],text:'Flights are easyJet booking KCSFPD5. Outbound EZY8289: Sat Jun 20, LGW North 09:30 to LIN 12:30. Return EZY8290: Tue Jun 23, LIN 13:20 to LGW North 14:20. Total flight spend was USD 619.75, about EUR 534 / C$865.'},
     {keys:['outfit','wear','pack'],text:'Packing mood: one dressed-up Milan dinner look, one soft lake day outfit, one romantic lake dinner outfit, one casual Navigli look, and comfortable walkable shoes.'},
     {keys:['duomo','rooftop'],text:'Duomo rooftop is the easy Milan photo moment. Cart was ready for Sat 17:00, EUR 36 total, but it still needs checkout/payment.'},
-    {keys:['spend','budget','expense','amex','visa','money'],text:'Known actual trip spend is about EUR 1,904, roughly C$3,084 / US$2,209, before El Brellin and final airport transfer. Against the EUR 2.5k ceiling, that is about 76% used. Hotels are 49%, flights 28%, restaurants/cafes 17%, transport 4%, sightseeing 2%, and gelato under 1%.'}
+    {keys:['spend','budget','expense','amex','visa','money'],text:'All-in captured spend is about EUR 2,262, roughly C$3,664 / US$2,624. Core trip spend is about EUR 1,917, or 77% of the EUR 2.5k ceiling. The extra EUR 345 is separated as Tom jewellery for Yusma and Jimmy Fairly sunglasses for Myer.'}
   ];
   function add(cls,text){var b=document.createElement('div');b.className='bubble '+cls;b.textContent=text;log.appendChild(b);log.scrollTop=log.scrollHeight}
   function reply(q){var s=q.toLowerCase();var hit=answers.find(function(a){return a.keys.some(function(k){return s.indexOf(k)>-1})});return hit?hit.text:'Best simple answer: keep the trip slow and pretty. Main anchors are Giacomo Saturday, Bellagio spa + La Punta Sunday, the Varenna/lake return, and El Brellin Monday night.'}
