@@ -103,12 +103,25 @@ h2{font-size:clamp(36px,6vw,66px);line-height:.96}
 .progress-wrap{margin-top:14px}
 .progress-meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;margin-bottom:8px}
 .progress-bar{height:13px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
-.progress-fill{height:100%;width:46%;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--gold))}
+.progress-fill{height:100%;width:55%;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--gold))}
 .category-card{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.035);padding:15px}
 .category-card h3{font-size:15px;margin-bottom:4px}
 .category-card .money{font-family:Georgia,serif;font-size:27px;color:var(--ink);line-height:1.1}
 .category-card p{color:var(--muted);font-size:12px;margin-top:8px}
 .actual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
+.visual-grid{display:grid;grid-template-columns:260px 1fr;gap:18px;align-items:center;margin-bottom:18px}
+.donut{width:240px;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--gold) 0 67.7%, var(--green) 67.7% 91.4%, var(--lake) 91.4% 97.4%, #dca36d 97.4% 99.6%, #f4dca4 99.6% 100%);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line)}
+.donut-hole{width:132px;aspect-ratio:1;border-radius:50%;background:#07100d;border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:18px}
+.donut-hole b{font-family:Georgia,serif;font-size:30px;font-weight:400;line-height:1;color:var(--ink)}
+.donut-hole span{display:block;color:var(--muted);font-size:11px;margin-top:6px}
+.legend{display:grid;gap:9px}
+.legend-row{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;color:var(--muted);font-size:13px}
+.swatch{width:12px;height:12px;border-radius:3px;background:var(--gold)}
+.swatch.food{background:var(--green)}
+.swatch.transport{background:var(--lake)}
+.swatch.sight{background:#dca36d}
+.swatch.gelato{background:#f4dca4}
+.legend-row strong{color:var(--ink);font-size:13px}
 .timeline{display:grid;gap:14px}
 .day-ledger{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.025);overflow:hidden}
 .day-ledger-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 15px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.035)}
@@ -147,7 +160,8 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
   .hero:after{background:linear-gradient(180deg,rgba(7,16,13,.26),rgba(7,16,13,.94))}
   .hero-content{padding-top:250px}
   .summary,.lookbook,.cards,.todo{grid-template-columns:1fr}
-  .spend-grid,.spend-top,.insights,.actual-grid{grid-template-columns:1fr}
+  .spend-grid,.spend-top,.insights,.actual-grid,.visual-grid{grid-template-columns:1fr}
+  .donut{width:min(240px,100%);justify-self:center}
   .tx{grid-template-columns:1fr;align-items:start}
   .tx .amount{text-align:left}
   .extras{grid-template-columns:1fr}
@@ -194,7 +208,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
 <div class="summary">
   <div class="summary-card"><b>Booked</b><span>Flights + 3 hotels</span><small>London -> Milan -> London</small></div>
   <div class="summary-card"><b>Booked</b><span>3 dinners + spa</span><small>Giacomo, La Punta, El Brellin</small></div>
-  <div class="summary-card"><b>Updated</b><span>Boat skipped</span><small>Spend now tracks actuals</small></div>
+  <div class="summary-card"><b>Spend</b><span>Actuals tracked</span><small>No private boat in the plan</small></div>
 </div>
 
 <main>
@@ -208,7 +222,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
     <div class="plan">
       <div class="day"><div class="date">20<span>Sat</span></div><div><h3>London to Milan</h3><p>Land at Linate, check into Maison Borella, Duomo rooftop if paid, Giacomo dinner at 19:45.</p></div><span class="pill">Booked</span></div>
       <div class="day"><div class="date">21<span>Sun</span></div><div><h3>Milan to Bellagio</h3><p>Travel light to the lake. Hotel Du Lac, spa at 18:00, La Punta at 20:30.</p></div><span class="pill">Booked</span></div>
-      <div class="day"><div class="date">22<span>Mon</span></div><div><h3>Lake morning, Milan night</h3><p>Villa Melzi, optional private boat, back to Maison Borella, El Brellin at 20:30.</p></div><span class="pill">Mostly booked</span></div>
+      <div class="day"><div class="date">22<span>Mon</span></div><div><h3>Lake morning, Milan night</h3><p>Varenna return, back to Maison Borella, El Brellin at 20:30.</p></div><span class="pill">Mostly booked</span></div>
       <div class="day"><div class="date">23<span>Tue</span></div><div><h3>Easy flight home</h3><p>Breakfast, checkout, Linate. No ambitious sightseeing before the 13:20 flight.</p></div><span class="pill">Booked</span></div>
     </div>
   </div>
@@ -225,7 +239,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
       <div class="look"><div class="look-img giacomo"></div><div class="look-body"><div class="look-kicker">Saturday night</div><h3>Duomo-view dinner</h3><p>White tablecloths, Cathedral view, dressed-up Milan energy.</p><div class="wear"><strong>Wear:</strong> elevated dress or tailored set, gold jewelry, low/block heel.</div></div></div>
       <div class="look"><div class="look-img lake"></div><div class="look-body"><div class="look-kicker">Sunday day</div><h3>Lakefront Bellagio</h3><p>Breakfast terrace, blue water, mountains, cobblestones.</p><div class="wear"><strong>Wear:</strong> linen, white/cream/blue, sunglasses, walkable sandals.</div></div></div>
       <div class="look"><div class="look-img punta"></div><div class="look-body"><div class="look-kicker">Sunday dinner</div><h3>La Punta</h3><p>Lake view, soft evening, walk back through Bellagio.</p><div class="wear"><strong>Wear:</strong> romantic dress, shawl/cardigan, flats or comfortable sandals.</div></div></div>
-      <div class="look"><div class="look-img boat"></div><div class="look-body"><div class="look-kicker">Monday option</div><h3>Private boat</h3><p>The big photo-memory moment if we keep the splurge.</p><div class="wear"><strong>Wear:</strong> flowy dress or linen co-ord, light jacket, sunglasses.</div></div></div>
+      <div class="look"><div class="look-img boat"></div><div class="look-body"><div class="look-kicker">Lake movement</div><h3>Como crossing</h3><p>Ferries, water, mountains, and the soft lake photos without the private-boat spend.</p><div class="wear"><strong>Wear:</strong> flowy dress or linen co-ord, light jacket, sunglasses.</div></div></div>
       <div class="look"><div class="look-img brellin"></div><div class="look-body"><div class="look-kicker">Monday night</div><h3>El Brellin</h3><p>Warm garden, Navigli atmosphere, cozy old Milan.</p><div class="wear"><strong>Wear:</strong> midi skirt or relaxed dinner outfit, soft top, light layer.</div></div></div>
       <div class="look"><div class="look-img navigli"></div><div class="look-body"><div class="look-kicker">Milan base</div><h3>Navigli walks</h3><p>Canals, coffee, easy strolls around Maison Borella.</p><div class="wear"><strong>Wear:</strong> casual chic denim, white top, blazer/shirt layer.</div></div></div>
     </div>
@@ -254,9 +268,9 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
       <p class="note">Known trip spend, organized from booked hotel amounts, card screenshots, and Yusma's two dinner payments. EUR is the reporting currency; smaller figures use rough working rates of EUR 1 = C$1.62 = US$1.16.</p>
     </div>
     <div class="spend-top">
-      <div class="metric"><b>Target ceiling</b><span>EUR 3.0k</span><small>Soft max for the trip</small></div>
+      <div class="metric"><b>Working ceiling</b><span>EUR 2.5k</span><small>Realistic plan, no private boat</small></div>
       <div class="metric"><b>Known actuals</b><span>EUR 1,370</span><small>C$2,220 / US$1,589 equivalent</small></div>
-      <div class="metric"><b>Budget used</b><span>46%</span><small>Boat skipped, El Brellin not yet added</small></div>
+      <div class="metric"><b>Budget used</b><span>55%</span><small>El Brellin and final airport costs still open</small></div>
     </div>
     <div class="spend-grid">
       <div class="spend-panel">
@@ -265,7 +279,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
           <strong>EUR 1,370</strong>
           <p>C$2,220 / US$1,589 equivalent. Includes all three hotel nights, city taxes we know, Yusma-paid dinners, transport, snacks, and Varenna sightseeing.</p>
           <div class="progress-wrap">
-            <div class="progress-meta"><span>Spend vs EUR 3,000 target</span><strong>46% used</strong></div>
+            <div class="progress-meta"><span>Spend vs EUR 2,500 working ceiling</span><strong>55% used</strong></div>
             <div class="progress-bar"><div class="progress-fill"></div></div>
           </div>
         </div>
@@ -273,11 +287,22 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
           <div class="eyebrow"><span>Category mix</span></div>
           <h2>What drove it</h2>
         </div>
+        <div class="visual-grid">
+          <div class="donut"><div class="donut-hole"><b>EUR 1,370</b><span>known actuals</span></div></div>
+          <div class="legend">
+            <div class="legend-row"><span class="swatch"></span><span>Hotels</span><strong>67.7%</strong></div>
+            <div class="legend-row"><span class="swatch food"></span><span>Restaurants + cafes</span><strong>23.7%</strong></div>
+            <div class="legend-row"><span class="swatch transport"></span><span>Transport</span><strong>6.0%</strong></div>
+            <div class="legend-row"><span class="swatch sight"></span><span>Sightseeing</span><strong>2.2%</strong></div>
+            <div class="legend-row"><span class="swatch gelato"></span><span>Gelato</span><strong>0.4%</strong></div>
+          </div>
+        </div>
         <div class="actual-grid">
           <div class="category-card"><h3>Hotels</h3><div class="money">EUR 928</div><span class="money-small">C$1,503 / US$1,076</span><p>The trip is hotel-led: two Maison Borella nights plus Hotel Du Lac in Bellagio.</p></div>
-          <div class="category-card"><h3>Food</h3><div class="money">EUR 330</div><span class="money-small">C$535 / US$383</span><p>Giacomo + La Punta are the anchors; snacks are controlled.</p></div>
+          <div class="category-card"><h3>Restaurants + cafes</h3><div class="money">EUR 325</div><span class="money-small">C$527 / US$377</span><p>Giacomo + La Punta are the anchors; cafes and casual food stay modest.</p></div>
           <div class="category-card"><h3>Transport</h3><div class="money">EUR 82</div><span class="money-small">C$133 / US$96</span><p>Taxi, train, ferry, and London transit.</p></div>
           <div class="category-card"><h3>Sightseeing</h3><div class="money">EUR 30</div><span class="money-small">C$49 / US$35</span><p>Villa Monastero / Varenna ticketing.</p></div>
+          <div class="category-card"><h3>Gelato</h3><div class="money">EUR 5</div><span class="money-small">C$8 / US$6</span><p>Artico was a tiny cost, but exactly the kind of small spend that makes the trip feel alive.</p></div>
         </div>
         <div class="bars">
           <div class="bar-row">
@@ -285,7 +310,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
             <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-label"><span>Food and restaurants</span><strong>24%</strong></div>
+            <div class="bar-label"><span>Restaurants + cafes</span><strong>24%</strong></div>
             <div class="bar-track"><div class="bar-fill" style="width:24%"></div></div>
           </div>
           <div class="bar-row">
@@ -296,6 +321,10 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
             <div class="bar-label"><span>Sightseeing / tickets</span><strong>2%</strong></div>
             <div class="bar-track"><div class="bar-fill" style="width:2%"></div></div>
           </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Gelato</span><strong>&lt;1%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:1%"></div></div>
+          </div>
         </div>
       </div>
       <div class="spend-panel">
@@ -304,9 +333,9 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
           <h2>Insights</h2>
         </div>
         <div class="ledger">
-          <div class="line-item"><div><b>The trip is not snack-heavy</b><span>All small food and gelato captured is about EUR 36. The budget is being shaped by hotels and dinners, exactly where the experience lives.</span></div><div class="amount">3%</div></div>
+          <div class="line-item"><div><b>The trip is not snack-heavy</b><span>Small cafes, station bites, and gelato are tiny relative to the whole trip. The budget is being shaped by hotels and dinners, exactly where the experience lives.</span></div><div class="amount">3%</div></div>
           <div class="line-item"><div><b>Hotels are the luxury lever</b><span>EUR 928 is going to stay quality and location: Navigli, Bellagio lakefront, then Navigli canal view.</span></div><div class="amount">68%</div></div>
-          <div class="line-item"><div><b>Skipping the boat mattered</b><span>Not doing the EUR 492.20 boat saved more than every train, ferry, taxi, gelato, snack, and Villa Monastero ticket combined.</span></div><div class="amount">EUR 0</div></div>
+          <div class="line-item"><div><b>The ceiling is now realistic</b><span>EUR 2.5k is the cleaner working ceiling because the plan is built around hotels, meals, lake movement, and Milan, not a private boat add-on.</span></div><div class="amount">55%</div></div>
           <div class="line-item"><div><b>Food is premium but disciplined</b><span>Two strong dinners, no alcohol, and casual food kept the category meaningful without being runaway.</span></div><div class="amount">24%</div></div>
         </div>
       </div>
@@ -343,7 +372,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
           <div class="tx"><div class="tag-mini">Dinner</div><div><b>El Brellin</b><span>Booked for final dinner; add receipt after payment</span></div><div class="amount">Pending</div></div>
         </div>
       </div>
-      <p class="excluded">Excluded: DoorDash C$11.29 and older Canada grocery/convenience charges. Optional boat was skipped, so it stays at EUR 0.</p>
+      <p class="excluded">Excluded: DoorDash C$11.29 and older Canada grocery/convenience charges. Private boat removed from the model because it was not part of the realistic plan.</p>
     </div>
   </div>
 </section>
@@ -351,13 +380,13 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
 <section id="todo">
   <div class="shell">
     <div class="section-head">
-      <div class="eyebrow"><span>Still open</span></div>
-      <h2>Only three<br><em>small decisions</em></h2>
+      <div class="eyebrow"><span>Next receipts</span></div>
+      <h2>Loose ends,<br><em>not big decisions</em></h2>
     </div>
     <div class="todo">
-      <div class="card"><b>Skipped</b><h3>Private boat</h3><p>EUR 492.20 saved. This was the biggest single budget decision of the trip.</p></div>
+      <div class="card"><b>Pending actual</b><h3>El Brellin</h3><p>Add the final Navigli dinner receipt after payment so restaurants/cafes are complete.</p></div>
+      <div class="card"><b>Likely final</b><h3>Airport transfer</h3><p>Add the Linate taxi or transit cost tomorrow morning.</p></div>
       <div class="card"><b>Passed</b><h3>Duomo rooftop</h3><p>Cart was ready for Sat 17:00, EUR 36 total, but the Milan evening worked without adding it.</p></div>
-      <div class="card"><b>Logistics</b><h3>Train, ferry, luggage</h3><p>Buy train/ferry closer to travel. Confirm Maison Borella luggage storage.</p></div>
     </div>
   </div>
 </section>
@@ -380,7 +409,7 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
 <div class="chat" id="chat">
   <div class="chat-head"><b>Trip assistant</b><button id="chatClose" aria-label="Close">x</button></div>
   <div class="chat-log" id="chatLog">
-    <div class="bubble bot">Ask me things like “what should I wear to La Punta?”, “is the boat worth it?”, “where is the ravioli?”, or “should we do La Scala?”</div>
+    <div class="bubble bot">Ask me things like “what should I wear to La Punta?”, “where is the ravioli?”, “how are we spending?”, or “should we do La Scala?”</div>
   </div>
   <form class="chat-form" id="chatForm">
     <input id="chatInput" placeholder="Ask about outfits, food, timing..." autocomplete="off">
@@ -402,16 +431,16 @@ footer{padding:42px 0 64px;color:var(--soft);font-size:13px}
   var answers=[
     {keys:['punta','la punta','sunday dinner'],text:'La Punta is the relaxed lake dinner: water, mountains, soft evening light. Outfit: romantic dress, shawl/cardigan, and flats or comfortable sandals for the walk back.'},
     {keys:['giacomo','duomo','saturday dinner'],text:'Giacomo is the dressed-up Milan moment: Duomo view, white tablecloths, city light. Outfit: elevated dress or tailored set, gold jewelry, and a low/block heel.'},
-    {keys:['boat','como boat','private boat'],text:'The boat is the main wow splurge. It is worth it if you want the cinematic Lake Como memory; skip it if you would rather keep the budget calmer.'},
+    {keys:['boat','como boat','private boat'],text:'Private boat is removed from the realistic plan. The better version is ferries, lakefront walks, Villa Monastero/Varenna, and keeping the spend focused on hotels and meals.'},
     {keys:['ravioli','pasta'],text:'Ravioli mission: make El Brellin the pasta night and ask what stuffed pasta is on that evening. If shrimp/pumpkin/burrata ravioli is available, that is the order.'},
     {keys:['scala','la scala','ballet','opera','show'],text:'La Scala is tricky this trip. Carmen is at 20:00 on Sat 20 and Mon 22, which conflicts with Giacomo and El Brellin. Ballet starts after you leave. I would skip unless replacing a dinner.'},
     {keys:['hotel','stay','where are we staying'],text:'Hotels are locked: Maison Borella in Milan Jun 20-21, Hotel Du Lac in Bellagio Jun 21-22, then Maison Borella Canal View Jun 22-23.'},
     {keys:['outfit','wear','pack'],text:'Packing mood: one dressed-up Milan dinner look, one soft lake day outfit, one romantic lake dinner outfit, one casual Navigli look, and comfortable walkable shoes.'},
     {keys:['duomo','rooftop'],text:'Duomo rooftop is the easy Milan photo moment. Cart was ready for Sat 17:00, EUR 36 total, but it still needs checkout/payment.'},
-    {keys:['spend','budget','expense','amex','visa','money'],text:'Known actual trip spend is about EUR 1,370, roughly C$2,220 / US$1,589, before El Brellin and any final airport costs. Hotels are about 68% of the known total, food is 24%, transport is 6%, and skipping the EUR 492 boat was the biggest budget-saving decision.'}
+    {keys:['spend','budget','expense','amex','visa','money'],text:'Known actual trip spend is about EUR 1,370, roughly C$2,220 / US$1,589, before El Brellin and final airport costs. Against the realistic EUR 2.5k ceiling, that is about 55% used. Hotels are 68%, restaurants/cafes 24%, transport 6%, sightseeing 2%, and gelato under 1%.'}
   ];
   function add(cls,text){var b=document.createElement('div');b.className='bubble '+cls;b.textContent=text;log.appendChild(b);log.scrollTop=log.scrollHeight}
-  function reply(q){var s=q.toLowerCase();var hit=answers.find(function(a){return a.keys.some(function(k){return s.indexOf(k)>-1})});return hit?hit.text:'Best simple answer: keep the trip slow and pretty. Main anchors are Giacomo Saturday, Bellagio spa + La Punta Sunday, optional boat Monday, and El Brellin Monday night.'}
+  function reply(q){var s=q.toLowerCase();var hit=answers.find(function(a){return a.keys.some(function(k){return s.indexOf(k)>-1})});return hit?hit.text:'Best simple answer: keep the trip slow and pretty. Main anchors are Giacomo Saturday, Bellagio spa + La Punta Sunday, the Varenna/lake return, and El Brellin Monday night.'}
   launch.addEventListener('click',function(){chat.classList.toggle('open')});
   close.addEventListener('click',function(){chat.classList.remove('open')});
   form.addEventListener('submit',function(e){e.preventDefault();var q=input.value.trim();if(!q)return;add('user',q);input.value='';setTimeout(function(){add('bot',reply(q))},120)});
